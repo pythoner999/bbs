@@ -152,7 +152,21 @@
             pid = $(this).attr("comment_pk")
 
 
-        })
+        });
+
+        $(".diggit ").hover(function() {
+
+            $(this).css("background", "url('/static/img/upup3.gif') no-repeat");
+            },function() {
+            $(this).css("background", "url('/static/img/upup.gif') no-repeat");
+        });
+
+         $(".buryit ").hover(function() {
+
+            $(this).css("background", "url('/static/img/downdown3.gif') no-repeat");
+            },function() {
+            $(this).css("background", "url('/static/img/downdown.gif') no-repeat");
+        });
 
     </script>
 

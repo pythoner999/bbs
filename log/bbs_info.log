@@ -550,3 +550,6 @@ TypeError: In order to allow non-dict objects to be serialized set the safe para
 [2019-01-25 01:28:27,639][Thread-115:17088][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
 [2019-01-25 01:43:37,256][Thread-170:16472][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
 [2019-01-25 02:30:49,935][Thread-183:19048][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-25 17:17:07,832][Thread-8:25144][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-25 17:20:03,491][Thread-27:24292][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-25 17:46:29,667][Thread-61:19216][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
