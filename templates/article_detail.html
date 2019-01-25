@@ -1,0 +1,172 @@
+{% extends 'base.html' %}
+
+{% block page-main %}
+
+    <div class="article-detail">
+        <h1>{{ article.title }}</h1>
+        <p>{{ article.articledetail.content|safe }}</p>
+    </div>
+
+    <div class="poll clearfix">
+        <div id="div_digg">
+            <div class="diggit action">
+                <span class="diggnum" id="digg_count">{{ article.up_count }}</span>
+            </div>
+            <div class="buryit action">
+                <span class="burynum" id="bury_count">{{ article.down_count }}</span>
+            </div>
+            <div class="clear"></div>
+            <div class="diggword" id="digg_tips" style="color: red;"></div>
+        </div>
+
+    </div>
+    <p>評論樹</p>
+
+    <div class="comment_tree">
+
+    </div>
+    <hr>
+    <p>評論列表</p>
+    <ul class="comment_list">
+        {% for comment in comment_list %}
+            <li class="list-group-item">
+                <div>
+                    <a href="">#{{ forloop.counter }}樓</a> &nbsp;&nbsp;
+                    <span style="color: gray">{{ comment.create_time|date:"Y-m-d H:i" }}</span> &nbsp;&nbsp;
+                    <a href=""><span>{{ comment.user.username }}</span></a>
+                    <a class="pull-right reply_btn" username="{{ comment.user.username }}"
+                       comment_pk="{{ comment.pk }}"><span>回復</span></a>
+                </div>
+                {% if comment.parent_comment_id %}
+                    <div class="pid_info well">
+                        <p> {{ comment.parent_comment.user.username }}:
+                            &nbsp;&nbsp;&nbsp;{{ comment.parent_comment.content }} </p>
+                    </div>
+                {% endif %}
+
+                <div class="con">
+                    <p>
+                        {{ comment.content }}
+                    </p>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+
+    {% if request.user.username %}
+        <div class="div_comment" style="margin-top: 25px">
+            <label>暱稱：</label>
+            <input type="text" id="tbCommentAuthor" class="author" disabled="disabled" size="50"
+                         value="{{ request.user.username }}">
+            <p style="margin-top: 15px"><label for="comment_content">評論內容</label></p>
+            <textarea name="" id="comment_content" cols="60" rows="10"></textarea>
+            <p>
+                <button class="btn btn-primary" id="comment_btn">提交評論</button>
+            </p>
+
+        </div>
+    {% else %}
+        <a style="margin-bottom: 60px" href="/login/">評論前，請先按此登入</a>
+        <p></p>
+    {% endif %}
+
+
+
+    <script>
+        // 獲取評論數據，展示評論樹結構
+        $.ajax({
+            url: "/blog/comment_tree/" + '{{ article.pk }}/',
+            success: function (data) {
+                console.log(data);
+
+                $.each(data, function (index, comment_dict) {
+                    var s = '<div class="comment_item" comment_id=' + comment_dict.pk + '> <span class="content">' + comment_dict.content + '</span> </div>'
+                    if (comment_dict.parent_comment_id) {
+                        // 子評論
+                        var pid=comment_dict.parent_comment_id;
+                        $("[comment_id="+pid+"]").append(s);
+                    }
+                    else {   //  根評論
+                        $(".comment_tree").append(s);
+                    }
+                })
+
+            }
+        });
+
+
+        // 提交評論
+        var pid = "";
+        $("#comment_btn").click(function () {
+
+            var article_id = $(".info").attr("article_id");
+            var content = $("#comment_content").val();
+            if (pid) {
+                var index = content.indexOf("\n");
+                content = content.slice(index + 1)
+            }
+
+
+            $.ajax({
+                url: "/blog/comment/",
+                type: "post",
+                data: {
+                    article_id: article_id,
+                    content: content,
+                    pid: pid,
+                    csrfmiddlewaretoken: $("[name='csrfmiddlewaretoken']").val(),
+                },
+                success: function (data) {
+                    console.log(data);
+                    var create_time = data.create_time;
+                    var content = data.content;
+                    var username = data.username;
+
+
+                    var comment_li = '<li class="list-group-item"><div><span style="color: gray">' + create_time + '</span> &nbsp;&nbsp; <a href=""><span>' + username + '</span></a></div> <div class="con"> <p> ' + content + ' </p> </div> </li>';
+
+                    $(".comment_list").append(comment_li);
+
+                    // 清空文本框
+                    $("#comment_content").val('');
+                    // 清空pid
+                    pid = ""
+                }
+            })
+
+
+        });
+
+
+        // 回復按鈕事件
+
+        $(".list-group-item .reply_btn").click(function () {
+
+            $("#comment_content").focus();
+
+            var v = "@" + $(this).attr("username") + "\n";
+            $("#comment_content").val(v);
+
+
+            //pid賦值
+            pid = $(this).attr("comment_pk")
+
+
+        })
+
+    </script>
+
+
+
+
+
+
+
+
+    <div class="info" article_id="{{ article.pk }}" username="{{ request.user.username }}"></div>
+
+    {% csrf_token %}
+
+    <script src="/static/js/article_detail.js"></script>
+
+{% endblock %}

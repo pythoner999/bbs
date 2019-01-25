@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>歡迎登入</title>
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/mystyle.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <form class="form-horizontal col-md-6 col-md-offset-3 login-form">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="username" class="col-sm-2 control-label">用戶名</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="username" name="username" placeholder="用戶名">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password" class="col-sm-2 control-label">密碼</label>
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="密碼">
+                </div>
+            </div>
+            <div class="form-group">
+                <!-- 放置極驗的滑動驗證碼 -->
+                <div id="popup-captcha"></div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="button" class="btn btn-primary" id="login-button">登入</button>
+                    <span class="login-error"></span>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="/static/jquery-3.3.1.js"></script>
+<script src="/static/bootstrap/js/bootstrap.min.js"></script>
+<!-- 引入封裝了failback的接口--initGeetest -->
+<script src="http://static.geetest.com/static/tools/gt.js"></script>
+<script>
+
+    // 極驗 發送登入數據的
+    var handlerPopup = function (captchaObj) {
+        // 成功的回調
+        captchaObj.onSuccess(function () {
+            var validate = captchaObj.getValidate();
+            // 1. 取到用戶填寫的用戶名和密碼 -> 取input框的值
+            var username = $("#username").val();
+            var password = $("#password").val();
+            $.ajax({
+                url: "/login/", // 進行二次驗證
+                type: "post",
+                dataType: "json",
+                data: {
+                    username: username,
+                    password: password,
+                    csrfmiddlewaretoken: $("[name='csrfmiddlewaretoken']").val(),
+                    geetest_challenge: validate.geetest_challenge,
+                    geetest_validate: validate.geetest_validate,
+                    geetest_seccode: validate.geetest_seccode
+                },
+                success: function (data) {
+
+                    if (data.status) {
+                        // 有錯誤，在頁面上提示
+                        $(".login-error").text(data.msg);
+                    } else {
+                        // 登入成功
+                        location.href = data.msg;
+                    }
+                }
+            });
+        });
+
+         $("#login-button").click(function () {
+            captchaObj.show();
+        });
+        // 將驗證碼加到id为captcha的元素里
+        captchaObj.appendTo("#popup-captcha");
+        // 更多接口参考：http://www.geetest.com/install/sections/idx-client-sdk.html
+    };
+    // 當input框獲取焦點時將之前的錯誤清空
+    $("#username,#password").focus(function () {
+        // 將之前的錯誤清空
+        $(".login-error").text("");
+    });
+
+    // 驗證開始需要向網站主後台獲取id，challenge，success（是否啟用failback）
+    $.ajax({
+        url: "/pc-geetest/register?t=" + (new Date()).getTime(), // 加隨機數防止緩存
+        type: "get",
+        dataType: "json",
+        success: function (data) {
+            // 使用initGeetest接口
+            // 參數1：配置參數
+            // 參數2：回調，回調的第一個參數驗證碼對象，之後可以使用它做appendTo之類的事件
+            initGeetest({
+                gt: data.gt,
+                challenge: data.challenge,
+                product: "popup", // 產品形式，包括：float，embed，popup。注意只對PC版驗證碼有效
+                offline: !data.success // 表示用戶後台檢測極驗服務器是否當機，一般不需要關注
+                // 更多配置參數請參見：http://www.geetest.com/install/sections/idx-client-sdk.html#config
+            }, handlerPopup);
+        }
+    })
+
+
+</script>
+</body>
+</html>
