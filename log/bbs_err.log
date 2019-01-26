@@ -413,3 +413,20 @@ Traceback (most recent call last):
   File "C:\Python36\lib\site-packages\django\http\response.py", line 524, in __init__
     'In order to allow non-dict objects to be serialized set the '
 TypeError: In order to allow non-dict objects to be serialized set the safe parameter to False.
+[2019-01-26 03:17:18,617][Thread-929:22560][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/add_article/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 269, in add_article
+    return render(request, "add_article.html")
+  File "C:\Python36\lib\site-packages\django\shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Python36\lib\site-packages\django\template\loader.py", line 67, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Python36\lib\site-packages\django\template\loader.py", line 25, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: add_article.html

@@ -553,3 +553,44 @@ TypeError: In order to allow non-dict objects to be serialized set the safe para
 [2019-01-25 17:17:07,832][Thread-8:25144][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
 [2019-01-25 17:20:03,491][Thread-27:24292][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
 [2019-01-25 17:46:29,667][Thread-61:19216][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-25 18:57:22,025][Thread-14:25076][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-25 19:09:30,592][Thread-33:12748][task_id:django.request][base.py:152][WARNING][Not Found: /blog/]
+[2019-01-25 19:16:01,321][Thread-72:7568][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-25 19:18:29,949][Thread-89:3804][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-25 19:20:44,907][Thread-101:12832][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-25 19:23:22,736][Thread-122:9868][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-25 19:26:11,415][Thread-135:25108][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-25 19:26:16,123][Thread-145:23956][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-25 19:47:28,648][Thread-350:23400][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-25 19:48:24,383][Thread-380:18024][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-25 19:48:47,867][Thread-391:23564][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-25 20:02:47,942][Thread-412:23644][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-25 22:44:25,489][Thread-426:8008][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-25 22:47:43,503][Thread-440:24748][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-25 23:06:10,307][Thread-558:5900][task_id:django.request][base.py:152][WARNING][Not Found: /backend/add_article/]
+[2019-01-25 23:06:28,939][Thread-559:24944][task_id:django.request][base.py:152][WARNING][Not Found: /backend/add_article/]
+[2019-01-25 23:33:20,453][Thread-743:24608][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-25 23:55:45,885][Thread-854:20364][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-26 01:35:14,018][Thread-334:19564][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-26 02:00:47,010][Thread-527:19268][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-26 02:52:50,628][Thread-821:9116][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-26 03:03:50,530][Thread-868:6196][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-26 03:17:18,617][Thread-929:22560][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/add_article/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 269, in add_article
+    return render(request, "add_article.html")
+  File "C:\Python36\lib\site-packages\django\shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Python36\lib\site-packages\django\template\loader.py", line 67, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Python36\lib\site-packages\django\template\loader.py", line 25, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: add_article.html
+[2019-01-26 03:19:29,118][Thread-18:25056][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-26 03:55:26,793][Thread-9:6564][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]

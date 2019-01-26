@@ -24,6 +24,20 @@
 
 
 /*主頁面*/
+.article h4 a{
+    color: #2d2d2d;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.article h4 a:hover{
+    color:gray;
+    text-decoration-line: none;
+    font-size: 1.2em;
+}
+
+
+
 .author-img {
     width: 80px;
     height: 80px;
@@ -36,6 +50,30 @@
 .article-footer {
     margin-top: 10px;
 }
+
+.write-article {
+    margin-left: 20%;
+    font-size: 1.5em;
+    font-weight: bold;
+    background-color: #2d2d2d;
+    border-color: black;
+    border-width: 1.5px;
+    color: #a8a8a8;
+}
+
+.write-article:hover {
+    /*background-color: #191919;*/
+    background-color: #2d2d2d;
+    border-color: black;
+    border-width: 1.5px;
+    color:#f9f9f9;
+}
+
+/*.write-article:click {*/
+   /*background-color: black;*/
+   /*border-color: black;*/
+   /*border-width: 1.5px;*/
+/*}*/
 
 
 /*個人主頁*/
@@ -123,4 +161,15 @@ input.author{
 /*評論樹*/
 .comment_tree .comment_item{
     margin-left: 20px;
+}
+
+ /*增加文章頁面*/
+ /*.add-article-content {*/
+            /*width: 80%;*/
+            /*margin: 20px auto;*/
+        /*}*/
+
+/*改bootstrap form-control*/
+.category-input{
+    display:inline;
 }
