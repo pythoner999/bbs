@@ -6,6 +6,7 @@ urlpatterns = [
 
 
     url(r"backend/add_article/",views.add_article),
+    url(r"backend/style/",views.style),
 
     url(r"up_down/",views.up_down),
     url(r"comment/",views.comment),

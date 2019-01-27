@@ -312,3 +312,7 @@ def upload(request):
     return HttpResponse(json.dumps(res))
 
 
+def style(request):
+    return render(request,"style.html")
+
+
