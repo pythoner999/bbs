@@ -173,3 +173,7 @@ input.author{
 .category-input{
     display:inline;
 }
+
+select {
+  font-family: 'FontAwesome', 'Second Font name'
+}

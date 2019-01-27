@@ -53,6 +53,7 @@ class Category(models.Model):
         return self.title
 
     class Meta:
+        unique_together = (("title", "blog"),)
         verbose_name = "文章分類"
         verbose_name_plural = verbose_name
 
@@ -69,6 +70,7 @@ class Tag(models.Model):
         return self.title
 
     class Meta:
+        unique_together = (("title", "blog"),)
         verbose_name = "標籤"
         verbose_name_plural = verbose_name
 
@@ -89,7 +91,7 @@ class Article(models.Model):
     # 踩
     down_count = models.IntegerField(verbose_name="踩數", default=0)
 
-    category = models.ForeignKey(to="Category", to_field="nid", null=True)
+    category = models.ForeignKey(to="Category", to_field="nid")
     user = models.ForeignKey(to="UserInfo", to_field="nid")
     tags = models.ManyToManyField(  # 中介模型
         to="Tag",

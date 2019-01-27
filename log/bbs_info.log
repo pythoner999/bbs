@@ -594,3 +594,752 @@ Traceback (most recent call last):
 django.template.exceptions.TemplateDoesNotExist: add_article.html
 [2019-01-26 03:19:29,118][Thread-18:25056][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
 [2019-01-26 03:55:26,793][Thread-9:6564][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-26 13:53:56,250][Thread-9:26452][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-26 16:38:40,184][Thread-33:5752][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-26 16:39:20,178][Thread-40:27640][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-26 16:59:49,131][Thread-137:21632][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-26 17:02:25,228][Thread-156:21608][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-26 17:11:36,312][Thread-231:9428][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-26 17:12:23,503][Thread-240:30580][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-26 17:27:28,412][Thread-1:17584][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/add_article/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 272, in add_article
+    return render(request, "add_article.html", {'category_list': category_list, })
+  File "C:\Python36\lib\site-packages\django\shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Python36\lib\site-packages\django\template\loader.py", line 68, in render_to_string
+    return template.render(context, request)
+  File "C:\Python36\lib\site-packages\django\template\backends\django.py", line 66, in render
+    return self.template.render(context)
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 207, in render
+    return self._render(context)
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 199, in _render
+    return self.nodelist.render(context)
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 990, in render
+    bit = node.render_annotated(context)
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 957, in render_annotated
+    return self.render(context)
+  File "C:\Python36\lib\site-packages\django\template\loader_tags.py", line 177, in render
+    return compiled_parent._render(context)
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 199, in _render
+    return self.nodelist.render(context)
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 990, in render
+    bit = node.render_annotated(context)
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 957, in render_annotated
+    return self.render(context)
+  File "C:\Python36\lib\site-packages\django\template\loader_tags.py", line 72, in render
+    result = block.nodelist.render(context)
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 990, in render
+    bit = node.render_annotated(context)
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 957, in render_annotated
+    return self.render(context)
+  File "C:\Python36\lib\site-packages\django\template\defaulttags.py", line 172, in render
+    values = list(values)
+TypeError: 'RelatedManager' object is not iterable
+[2019-01-26 17:30:05,527][Thread-15:25544][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-26 17:31:32,831][Thread-21:11780][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-26 17:32:03,120][Thread-45:29532][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-26 17:32:21,200][Thread-62:10784][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-26 17:32:43,997][Thread-68:29816][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-26 17:32:51,174][Thread-76:29788][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-26 17:33:33,537][Thread-93:26920][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-26 17:33:42,290][Thread-100:6004][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-26 17:35:02,705][Thread-12:25832][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/add_article/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 271, in add_article
+    category_list = blog.category_set
+AttributeError: 'NoneType' object has no attribute 'category_set'
+[2019-01-26 17:39:08,282][Thread-1:17880][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/add_article/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\contrib\sessions\backends\base.py", line 202, in _get_session
+    return self._session_cache
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\db\backends\base\base.py", line 213, in ensure_connection
+    self.connect()
+  File "C:\Python36\lib\site-packages\django\db\backends\base\base.py", line 189, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "C:\Python36\lib\site-packages\django\db\backends\mysql\base.py", line 274, in get_new_connection
+    conn = Database.connect(**conn_params)
+  File "C:\Python36\lib\site-packages\pymysql\__init__.py", line 94, in Connect
+    return Connection(*args, **kwargs)
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 327, in __init__
+    self.connect()
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 598, in connect
+    self._request_authentication()
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 862, in _request_authentication
+    auth_packet = self._process_auth(plugin_name, auth_packet)
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 933, in _process_auth
+    pkt = self._read_packet()
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 656, in _read_packet
+    packet_header = self._read_bytes(4)
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 702, in _read_bytes
+    CR.CR_SERVER_LOST, "Lost connection to MySQL server during query")
+pymysql.err.OperationalError: (2013, 'Lost connection to MySQL server during query')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 269, in add_article
+    blog = request.user.blog
+  File "C:\Python36\lib\site-packages\django\utils\functional.py", line 238, in inner
+    self._setup()
+  File "C:\Python36\lib\site-packages\django\utils\functional.py", line 386, in _setup
+    self._wrapped = self._setupfunc()
+  File "C:\Python36\lib\site-packages\django\contrib\auth\middleware.py", line 24, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+  File "C:\Python36\lib\site-packages\django\contrib\auth\middleware.py", line 12, in get_user
+    request._cached_user = auth.get_user(request)
+  File "C:\Python36\lib\site-packages\django\contrib\auth\__init__.py", line 211, in get_user
+    user_id = _get_user_session_key(request)
+  File "C:\Python36\lib\site-packages\django\contrib\auth\__init__.py", line 61, in _get_user_session_key
+    return get_user_model()._meta.pk.to_python(request.session[SESSION_KEY])
+  File "C:\Python36\lib\site-packages\django\contrib\sessions\backends\base.py", line 57, in __getitem__
+    return self._session[key]
+  File "C:\Python36\lib\site-packages\django\contrib\sessions\backends\base.py", line 207, in _get_session
+    self._session_cache = self.load()
+  File "C:\Python36\lib\site-packages\django\contrib\sessions\backends\db.py", line 35, in load
+    expire_date__gt=timezone.now()
+  File "C:\Python36\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Python36\lib\site-packages\django\db\models\query.py", line 374, in get
+    num = len(clone)
+  File "C:\Python36\lib\site-packages\django\db\models\query.py", line 232, in __len__
+    self._fetch_all()
+  File "C:\Python36\lib\site-packages\django\db\models\query.py", line 1118, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "C:\Python36\lib\site-packages\django\db\models\query.py", line 53, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch)
+  File "C:\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 876, in execute_sql
+    sql, params = self.as_sql()
+  File "C:\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 441, in as_sql
+    where, w_params = self.compile(self.where) if self.where is not None else ("", [])
+  File "C:\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 373, in compile
+    sql, params = node.as_sql(self, self.connection)
+  File "C:\Python36\lib\site-packages\django\db\models\sql\where.py", line 79, in as_sql
+    sql, params = compiler.compile(child)
+  File "C:\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 373, in compile
+    sql, params = node.as_sql(self, self.connection)
+  File "C:\Python36\lib\site-packages\django\db\models\lookups.py", line 169, in as_sql
+    lhs_sql, params = self.process_lhs(compiler, connection)
+  File "C:\Python36\lib\site-packages\django\db\models\lookups.py", line 162, in process_lhs
+    db_type = self.lhs.output_field.db_type(connection=connection)
+  File "C:\Python36\lib\site-packages\django\db\models\fields\__init__.py", line 644, in db_type
+    return connection.data_types[self.get_internal_type()] % data
+  File "C:\Python36\lib\site-packages\django\utils\functional.py", line 35, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\Python36\lib\site-packages\django\db\backends\mysql\base.py", line 174, in data_types
+    if self.features.supports_microsecond_precision:
+  File "C:\Python36\lib\site-packages\django\utils\functional.py", line 35, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\Python36\lib\site-packages\django\db\backends\mysql\features.py", line 53, in supports_microsecond_precision
+    return self.connection.mysql_version >= (5, 6, 4) and Database.version_info >= (1, 2, 5)
+  File "C:\Python36\lib\site-packages\django\utils\functional.py", line 35, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\Python36\lib\site-packages\django\db\backends\mysql\base.py", line 385, in mysql_version
+    with self.temporary_connection() as cursor:
+  File "C:\Python36\lib\contextlib.py", line 81, in __enter__
+    return next(self.gen)
+  File "C:\Python36\lib\site-packages\django\db\backends\base\base.py", line 591, in temporary_connection
+    cursor = self.cursor()
+  File "C:\Python36\lib\site-packages\django\db\backends\base\base.py", line 254, in cursor
+    return self._cursor()
+  File "C:\Python36\lib\site-packages\django\db\backends\base\base.py", line 229, in _cursor
+    self.ensure_connection()
+  File "C:\Python36\lib\site-packages\django\db\backends\base\base.py", line 213, in ensure_connection
+    self.connect()
+  File "C:\Python36\lib\site-packages\django\db\utils.py", line 94, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "C:\Python36\lib\site-packages\django\utils\six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Python36\lib\site-packages\django\db\backends\base\base.py", line 213, in ensure_connection
+    self.connect()
+  File "C:\Python36\lib\site-packages\django\db\backends\base\base.py", line 189, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "C:\Python36\lib\site-packages\django\db\backends\mysql\base.py", line 274, in get_new_connection
+    conn = Database.connect(**conn_params)
+  File "C:\Python36\lib\site-packages\pymysql\__init__.py", line 94, in Connect
+    return Connection(*args, **kwargs)
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 327, in __init__
+    self.connect()
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 598, in connect
+    self._request_authentication()
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 862, in _request_authentication
+    auth_packet = self._process_auth(plugin_name, auth_packet)
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 933, in _process_auth
+    pkt = self._read_packet()
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 656, in _read_packet
+    packet_header = self._read_bytes(4)
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 702, in _read_bytes
+    CR.CR_SERVER_LOST, "Lost connection to MySQL server during query")
+django.db.utils.OperationalError: (2013, 'Lost connection to MySQL server during query')
+[2019-01-26 17:39:36,317][Thread-3:28748][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/add_article/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\contrib\sessions\backends\base.py", line 202, in _get_session
+    return self._session_cache
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 582, in connect
+    **kwargs)
+  File "C:\Python36\lib\socket.py", line 724, in create_connection
+    raise err
+  File "C:\Python36\lib\socket.py", line 713, in create_connection
+    sock.connect(sa)
+socket.timeout: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\db\backends\base\base.py", line 213, in ensure_connection
+    self.connect()
+  File "C:\Python36\lib\site-packages\django\db\backends\base\base.py", line 189, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "C:\Python36\lib\site-packages\django\db\backends\mysql\base.py", line 274, in get_new_connection
+    conn = Database.connect(**conn_params)
+  File "C:\Python36\lib\site-packages\pymysql\__init__.py", line 94, in Connect
+    return Connection(*args, **kwargs)
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 327, in __init__
+    self.connect()
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 629, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on '192.168.0.110' (timed out)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 269, in add_article
+    blog = request.user.blog
+  File "C:\Python36\lib\site-packages\django\utils\functional.py", line 238, in inner
+    self._setup()
+  File "C:\Python36\lib\site-packages\django\utils\functional.py", line 386, in _setup
+    self._wrapped = self._setupfunc()
+  File "C:\Python36\lib\site-packages\django\contrib\auth\middleware.py", line 24, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+  File "C:\Python36\lib\site-packages\django\contrib\auth\middleware.py", line 12, in get_user
+    request._cached_user = auth.get_user(request)
+  File "C:\Python36\lib\site-packages\django\contrib\auth\__init__.py", line 211, in get_user
+    user_id = _get_user_session_key(request)
+  File "C:\Python36\lib\site-packages\django\contrib\auth\__init__.py", line 61, in _get_user_session_key
+    return get_user_model()._meta.pk.to_python(request.session[SESSION_KEY])
+  File "C:\Python36\lib\site-packages\django\contrib\sessions\backends\base.py", line 57, in __getitem__
+    return self._session[key]
+  File "C:\Python36\lib\site-packages\django\contrib\sessions\backends\base.py", line 207, in _get_session
+    self._session_cache = self.load()
+  File "C:\Python36\lib\site-packages\django\contrib\sessions\backends\db.py", line 35, in load
+    expire_date__gt=timezone.now()
+  File "C:\Python36\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Python36\lib\site-packages\django\db\models\query.py", line 374, in get
+    num = len(clone)
+  File "C:\Python36\lib\site-packages\django\db\models\query.py", line 232, in __len__
+    self._fetch_all()
+  File "C:\Python36\lib\site-packages\django\db\models\query.py", line 1118, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "C:\Python36\lib\site-packages\django\db\models\query.py", line 53, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch)
+  File "C:\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 876, in execute_sql
+    sql, params = self.as_sql()
+  File "C:\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 441, in as_sql
+    where, w_params = self.compile(self.where) if self.where is not None else ("", [])
+  File "C:\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 373, in compile
+    sql, params = node.as_sql(self, self.connection)
+  File "C:\Python36\lib\site-packages\django\db\models\sql\where.py", line 79, in as_sql
+    sql, params = compiler.compile(child)
+  File "C:\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 373, in compile
+    sql, params = node.as_sql(self, self.connection)
+  File "C:\Python36\lib\site-packages\django\db\models\lookups.py", line 169, in as_sql
+    lhs_sql, params = self.process_lhs(compiler, connection)
+  File "C:\Python36\lib\site-packages\django\db\models\lookups.py", line 162, in process_lhs
+    db_type = self.lhs.output_field.db_type(connection=connection)
+  File "C:\Python36\lib\site-packages\django\db\models\fields\__init__.py", line 644, in db_type
+    return connection.data_types[self.get_internal_type()] % data
+  File "C:\Python36\lib\site-packages\django\utils\functional.py", line 35, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\Python36\lib\site-packages\django\db\backends\mysql\base.py", line 174, in data_types
+    if self.features.supports_microsecond_precision:
+  File "C:\Python36\lib\site-packages\django\utils\functional.py", line 35, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\Python36\lib\site-packages\django\db\backends\mysql\features.py", line 53, in supports_microsecond_precision
+    return self.connection.mysql_version >= (5, 6, 4) and Database.version_info >= (1, 2, 5)
+  File "C:\Python36\lib\site-packages\django\utils\functional.py", line 35, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\Python36\lib\site-packages\django\db\backends\mysql\base.py", line 385, in mysql_version
+    with self.temporary_connection() as cursor:
+  File "C:\Python36\lib\contextlib.py", line 81, in __enter__
+    return next(self.gen)
+  File "C:\Python36\lib\site-packages\django\db\backends\base\base.py", line 591, in temporary_connection
+    cursor = self.cursor()
+  File "C:\Python36\lib\site-packages\django\db\backends\base\base.py", line 254, in cursor
+    return self._cursor()
+  File "C:\Python36\lib\site-packages\django\db\backends\base\base.py", line 229, in _cursor
+    self.ensure_connection()
+  File "C:\Python36\lib\site-packages\django\db\backends\base\base.py", line 213, in ensure_connection
+    self.connect()
+  File "C:\Python36\lib\site-packages\django\db\utils.py", line 94, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "C:\Python36\lib\site-packages\django\utils\six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Python36\lib\site-packages\django\db\backends\base\base.py", line 213, in ensure_connection
+    self.connect()
+  File "C:\Python36\lib\site-packages\django\db\backends\base\base.py", line 189, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "C:\Python36\lib\site-packages\django\db\backends\mysql\base.py", line 274, in get_new_connection
+    conn = Database.connect(**conn_params)
+  File "C:\Python36\lib\site-packages\pymysql\__init__.py", line 94, in Connect
+    return Connection(*args, **kwargs)
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 327, in __init__
+    self.connect()
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 629, in connect
+    raise exc
+django.db.utils.OperationalError: (2003, "Can't connect to MySQL server on '192.168.0.110' (timed out)")
+[2019-01-26 17:39:41,376][Thread-4:29252][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\contrib\sessions\backends\base.py", line 202, in _get_session
+    return self._session_cache
+AttributeError: 'SessionStore' object has no attribute '_session_cache'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 582, in connect
+    **kwargs)
+  File "C:\Python36\lib\socket.py", line 724, in create_connection
+    raise err
+  File "C:\Python36\lib\socket.py", line 713, in create_connection
+    sock.connect(sa)
+socket.timeout: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\db\backends\base\base.py", line 213, in ensure_connection
+    self.connect()
+  File "C:\Python36\lib\site-packages\django\db\backends\base\base.py", line 189, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "C:\Python36\lib\site-packages\django\db\backends\mysql\base.py", line 274, in get_new_connection
+    conn = Database.connect(**conn_params)
+  File "C:\Python36\lib\site-packages\pymysql\__init__.py", line 94, in Connect
+    return Connection(*args, **kwargs)
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 327, in __init__
+    self.connect()
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 629, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on '192.168.0.110' (timed out)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 72, in index
+    return render(request, "index.html", {"article_list": article_list})
+  File "C:\Python36\lib\site-packages\django\shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Python36\lib\site-packages\django\template\loader.py", line 68, in render_to_string
+    return template.render(context, request)
+  File "C:\Python36\lib\site-packages\django\template\backends\django.py", line 66, in render
+    return self.template.render(context)
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 207, in render
+    return self._render(context)
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 199, in _render
+    return self.nodelist.render(context)
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 990, in render
+    bit = node.render_annotated(context)
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 957, in render_annotated
+    return self.render(context)
+  File "C:\Python36\lib\site-packages\django\template\loader_tags.py", line 177, in render
+    return compiled_parent._render(context)
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 199, in _render
+    return self.nodelist.render(context)
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 990, in render
+    bit = node.render_annotated(context)
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 957, in render_annotated
+    return self.render(context)
+  File "C:\Python36\lib\site-packages\django\template\defaulttags.py", line 315, in render
+    match = condition.eval(context)
+  File "C:\Python36\lib\site-packages\django\template\defaulttags.py", line 892, in eval
+    return self.value.resolve(context, ignore_failures=True)
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 708, in resolve
+    obj = self.var.resolve(context)
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 849, in resolve
+    value = self._resolve_lookup(context)
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 882, in _resolve_lookup
+    current = current[bit]
+  File "C:\Python36\lib\site-packages\django\utils\functional.py", line 238, in inner
+    self._setup()
+  File "C:\Python36\lib\site-packages\django\utils\functional.py", line 386, in _setup
+    self._wrapped = self._setupfunc()
+  File "C:\Python36\lib\site-packages\django\contrib\auth\middleware.py", line 24, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+  File "C:\Python36\lib\site-packages\django\contrib\auth\middleware.py", line 12, in get_user
+    request._cached_user = auth.get_user(request)
+  File "C:\Python36\lib\site-packages\django\contrib\auth\__init__.py", line 211, in get_user
+    user_id = _get_user_session_key(request)
+  File "C:\Python36\lib\site-packages\django\contrib\auth\__init__.py", line 61, in _get_user_session_key
+    return get_user_model()._meta.pk.to_python(request.session[SESSION_KEY])
+  File "C:\Python36\lib\site-packages\django\contrib\sessions\backends\base.py", line 57, in __getitem__
+    return self._session[key]
+  File "C:\Python36\lib\site-packages\django\contrib\sessions\backends\base.py", line 207, in _get_session
+    self._session_cache = self.load()
+  File "C:\Python36\lib\site-packages\django\contrib\sessions\backends\db.py", line 35, in load
+    expire_date__gt=timezone.now()
+  File "C:\Python36\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Python36\lib\site-packages\django\db\models\query.py", line 374, in get
+    num = len(clone)
+  File "C:\Python36\lib\site-packages\django\db\models\query.py", line 232, in __len__
+    self._fetch_all()
+  File "C:\Python36\lib\site-packages\django\db\models\query.py", line 1118, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "C:\Python36\lib\site-packages\django\db\models\query.py", line 53, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch)
+  File "C:\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 876, in execute_sql
+    sql, params = self.as_sql()
+  File "C:\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 441, in as_sql
+    where, w_params = self.compile(self.where) if self.where is not None else ("", [])
+  File "C:\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 373, in compile
+    sql, params = node.as_sql(self, self.connection)
+  File "C:\Python36\lib\site-packages\django\db\models\sql\where.py", line 79, in as_sql
+    sql, params = compiler.compile(child)
+  File "C:\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 373, in compile
+    sql, params = node.as_sql(self, self.connection)
+  File "C:\Python36\lib\site-packages\django\db\models\lookups.py", line 169, in as_sql
+    lhs_sql, params = self.process_lhs(compiler, connection)
+  File "C:\Python36\lib\site-packages\django\db\models\lookups.py", line 162, in process_lhs
+    db_type = self.lhs.output_field.db_type(connection=connection)
+  File "C:\Python36\lib\site-packages\django\db\models\fields\__init__.py", line 644, in db_type
+    return connection.data_types[self.get_internal_type()] % data
+  File "C:\Python36\lib\site-packages\django\utils\functional.py", line 35, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\Python36\lib\site-packages\django\db\backends\mysql\base.py", line 174, in data_types
+    if self.features.supports_microsecond_precision:
+  File "C:\Python36\lib\site-packages\django\utils\functional.py", line 35, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\Python36\lib\site-packages\django\db\backends\mysql\features.py", line 53, in supports_microsecond_precision
+    return self.connection.mysql_version >= (5, 6, 4) and Database.version_info >= (1, 2, 5)
+  File "C:\Python36\lib\site-packages\django\utils\functional.py", line 35, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\Python36\lib\site-packages\django\db\backends\mysql\base.py", line 385, in mysql_version
+    with self.temporary_connection() as cursor:
+  File "C:\Python36\lib\contextlib.py", line 81, in __enter__
+    return next(self.gen)
+  File "C:\Python36\lib\site-packages\django\db\backends\base\base.py", line 591, in temporary_connection
+    cursor = self.cursor()
+  File "C:\Python36\lib\site-packages\django\db\backends\base\base.py", line 254, in cursor
+    return self._cursor()
+  File "C:\Python36\lib\site-packages\django\db\backends\base\base.py", line 229, in _cursor
+    self.ensure_connection()
+  File "C:\Python36\lib\site-packages\django\db\backends\base\base.py", line 213, in ensure_connection
+    self.connect()
+  File "C:\Python36\lib\site-packages\django\db\utils.py", line 94, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "C:\Python36\lib\site-packages\django\utils\six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Python36\lib\site-packages\django\db\backends\base\base.py", line 213, in ensure_connection
+    self.connect()
+  File "C:\Python36\lib\site-packages\django\db\backends\base\base.py", line 189, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "C:\Python36\lib\site-packages\django\db\backends\mysql\base.py", line 274, in get_new_connection
+    conn = Database.connect(**conn_params)
+  File "C:\Python36\lib\site-packages\pymysql\__init__.py", line 94, in Connect
+    return Connection(*args, **kwargs)
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 327, in __init__
+    self.connect()
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 629, in connect
+    raise exc
+django.db.utils.OperationalError: (2003, "Can't connect to MySQL server on '192.168.0.110' (timed out)")
+[2019-01-26 17:40:46,879][Thread-6:27432][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-26 17:40:48,557][Thread-7:27128][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/add_article/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 270, in add_article
+    category_list = blog.category_set
+AttributeError: 'NoneType' object has no attribute 'category_set'
+[2019-01-26 17:42:04,278][Thread-31:18888][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-26 17:42:28,020][Thread-45:30148][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/add_article/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 272, in add_article
+    return render(request, "add_article.html", {'category_list': category_list, })
+  File "C:\Python36\lib\site-packages\django\shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Python36\lib\site-packages\django\template\loader.py", line 68, in render_to_string
+    return template.render(context, request)
+  File "C:\Python36\lib\site-packages\django\template\backends\django.py", line 66, in render
+    return self.template.render(context)
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 207, in render
+    return self._render(context)
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 199, in _render
+    return self.nodelist.render(context)
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 990, in render
+    bit = node.render_annotated(context)
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 957, in render_annotated
+    return self.render(context)
+  File "C:\Python36\lib\site-packages\django\template\loader_tags.py", line 177, in render
+    return compiled_parent._render(context)
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 199, in _render
+    return self.nodelist.render(context)
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 990, in render
+    bit = node.render_annotated(context)
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 957, in render_annotated
+    return self.render(context)
+  File "C:\Python36\lib\site-packages\django\template\loader_tags.py", line 72, in render
+    result = block.nodelist.render(context)
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 990, in render
+    bit = node.render_annotated(context)
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 957, in render_annotated
+    return self.render(context)
+  File "C:\Python36\lib\site-packages\django\template\defaulttags.py", line 172, in render
+    values = list(values)
+TypeError: 'RelatedManager' object is not iterable
+[2019-01-26 17:48:48,350][Thread-16:25844][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-26 17:48:51,581][Thread-19:24596][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-26 17:53:39,806][Thread-24:26948][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-26 18:09:15,597][Thread-62:7324][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-26 18:11:29,082][Thread-102:30100][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-26 18:14:52,675][Thread-123:15396][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-26 18:16:41,940][Thread-135:27080][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-26 22:40:12,150][Thread-8:28540][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-26 23:05:38,129][Thread-69:30276][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-26 23:10:52,299][Thread-136:27064][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-26 23:19:52,293][Thread-176:29760][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-26 23:30:18,528][Thread-198:27740][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/add_article/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 271, in add_article
+    return render(request, "add_article.html", {'category_list': category_list, })
+  File "C:\Python36\lib\site-packages\django\shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Python36\lib\site-packages\django\template\loader.py", line 67, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Python36\lib\site-packages\django\template\loader.py", line 25, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: add_article.html
+[2019-01-26 23:30:21,350][Thread-199:4780][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-26 23:31:01,239][Thread-216:16460][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-26 23:38:04,658][Thread-226:23144][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-26 23:51:51,341][Thread-261:30392][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-26 23:54:21,239][Thread-277:17592][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-27 00:30:38,262][Thread-13:23464][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-27 01:23:23,701][Thread-9:30400][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-27 01:28:01,160][Thread-20:27024][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-27 01:35:06,644][Thread-60:26696][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-27 01:40:24,895][Thread-91:10392][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-27 01:43:50,609][Thread-103:17632][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-27 01:46:41,396][Thread-114:22124][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-27 02:04:34,768][Thread-152:25252][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-27 03:09:49,868][Thread-174:11852][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-27 03:12:26,495][Thread-185:28500][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-27 03:34:51,147][Thread-206:1392][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-27 03:39:50,335][Thread-9:30460][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-27 03:40:48,531][Thread-13:2924][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/add_article/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 259, in add_article
+    tag_list = request.POST.get_all('all_selected')
+AttributeError: 'QueryDict' object has no attribute 'get_all'
+[2019-01-27 03:40:49,080][Thread-14:10504][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/add_article/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 259, in add_article
+    tag_list = request.POST.get_all('all_selected')
+AttributeError: 'QueryDict' object has no attribute 'get_all'
+[2019-01-27 03:40:49,354][Thread-15:26944][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/add_article/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 259, in add_article
+    tag_list = request.POST.get_all('all_selected')
+AttributeError: 'QueryDict' object has no attribute 'get_all'
+[2019-01-27 03:40:49,533][Thread-16:30304][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/add_article/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 259, in add_article
+    tag_list = request.POST.get_all('all_selected')
+AttributeError: 'QueryDict' object has no attribute 'get_all'
+[2019-01-27 03:40:54,335][Thread-17:29464][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/add_article/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 259, in add_article
+    tag_list = request.POST.get_all('all_selected')
+AttributeError: 'QueryDict' object has no attribute 'get_all'
+[2019-01-27 03:53:00,558][Thread-5:17684][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-27 03:58:15,647][Thread-5:22892][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-27 03:58:45,453][Thread-23:860][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-27 04:02:05,112][Thread-16:1988][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-27 04:07:10,865][Thread-42:26020][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-27 11:21:32,403][Thread-11:27584][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-27 11:22:49,363][Thread-19:18508][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-27 11:24:02,802][Thread-31:17124][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-27 11:31:39,967][Thread-27:15364][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-27 11:53:29,493][Thread-26:2132][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-27 11:59:22,964][Thread-14:24452][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/add_article/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 264, in add_article
+    bs = BeautifulSoup(article_content, "html.parser")
+  File "C:\Python36\lib\site-packages\bs4\__init__.py", line 246, in __init__
+    elif len(markup) <= 256 and (
+TypeError: object of type 'NoneType' has no len()
+[2019-01-27 11:59:43,772][Thread-15:29376][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/add_article/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 264, in add_article
+    bs = BeautifulSoup(article_content, "html.parser")
+  File "C:\Python36\lib\site-packages\bs4\__init__.py", line 246, in __init__
+    elif len(markup) <= 256 and (
+TypeError: object of type 'NoneType' has no len()
+[2019-01-27 12:00:50,705][Thread-3:6360][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-27 12:06:08,810][Thread-12:17680][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/add_article/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 264, in add_article
+    bs = BeautifulSoup(article_content, "html.parser")
+  File "C:\Python36\lib\site-packages\bs4\__init__.py", line 246, in __init__
+    elif len(markup) <= 256 and (
+TypeError: object of type 'NoneType' has no len()
+[2019-01-27 12:06:21,030][Thread-13:29700][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/add_article/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 264, in add_article
+    bs = BeautifulSoup(article_content, "html.parser")
+  File "C:\Python36\lib\site-packages\bs4\__init__.py", line 246, in __init__
+    elif len(markup) <= 256 and (
+TypeError: object of type 'NoneType' has no len()
+[2019-01-27 12:08:57,855][Thread-14:28180][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/add_article/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 286, in add_article
+    blog = request.user.blog
+  File "C:\Python36\lib\site-packages\django\utils\functional.py", line 239, in inner
+    return func(self._wrapped, *args)
+AttributeError: 'AnonymousUser' object has no attribute 'blog'
+[2019-01-27 12:09:02,131][Thread-15:20184][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-27 12:12:54,440][Thread-10:10456][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/add_article/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 264, in add_article
+    bs = BeautifulSoup(article_content, "html.parser")
+  File "C:\Python36\lib\site-packages\bs4\__init__.py", line 246, in __init__
+    elif len(markup) <= 256 and (
+TypeError: object of type 'NoneType' has no len()
+[2019-01-27 12:13:16,945][Thread-11:29516][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/add_article/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 264, in add_article
+    bs = BeautifulSoup(article_content, "html.parser")
+  File "C:\Python36\lib\site-packages\bs4\__init__.py", line 246, in __init__
+    elif len(markup) <= 256 and (
+TypeError: object of type 'NoneType' has no len()
+[2019-01-27 12:29:14,247][Thread-6:2176][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-27 12:29:27,450][Thread-9:21972][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-27 12:31:38,870][Thread-44:29204][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-27 12:31:49,027][Thread-49:29504][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]

@@ -255,18 +255,44 @@ def comment_tree(request, article_id):
 def add_article(request):
     if request.method == "POST":
         title = request.POST.get('title')
+        category = request.POST.get('category')
+        tag_list = request.POST.getlist('all_selected')
+        # print(tag_list)
         article_content = request.POST.get('article_content')
         user = request.user
+        blog = user.blog
         bs = BeautifulSoup(article_content, "html.parser")
         desc = bs.text[0:150]+"..."
         # 過濾非法標籤，防xss攻擊
         for tag in bs.find_all():
             if tag.name in ["script", "link"]:
                 tag.decompose()
-        article_obj = models.Article.objects.create(user=user, title=title, desc=desc)
-        models.ArticleDetail.objects.create(content=str(bs), article=article_obj)
-        return HttpResponse("添加成功")
-    return render(request, "add_article.html")
+        ret = {"status": 0, "msg": ""}
+        try:
+            try:
+                category_obj = models.Category.objects.create(title=category, blog=blog)
+            except:
+                pass
+            article_obj = models.Article.objects.create(user=user, title=title, desc=desc, category=category_obj)
+            models.ArticleDetail.objects.create(content=str(bs), article=article_obj)
+            for tag in tag_list:
+                tag = tag.strip()
+                if tag:
+                    try:
+                        tag_obj = models.Tag.objects.create(title=tag, blog=blog)
+                    except:
+                        pass
+                    models.Article2Tag.objects.create(article=article_obj, tag=tag_obj)
+        except Exception as e:
+            ret["status"] = 1
+            ret["msg"] = "添加失敗！"
+            return JsonResponse(ret)
+        ret["msg"] = "/blog/"+request.user.blog.site
+        return JsonResponse(ret)
+    blog = request.user.blog
+    category_list = blog.category_set.all()
+    tag_list = blog.tag_set.all()
+    return render(request, "add_article.html", {'category_list': category_list, 'tag_list':tag_list})
 
 
 def upload(request):
@@ -280,4 +306,5 @@ def upload(request):
         "url": "/media/add_article_img/"+obj.name # KingEditor自動幫你在content加入<img ...
     }
     return HttpResponse(json.dumps(res))
+
 

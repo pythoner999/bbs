@@ -11,6 +11,7 @@ urlpatterns = [
     url(r"comment/",views.comment),
     url(r"comment_tree/(\d+)/",views.comment_tree),
 
+
     # /blog/xiaohei/tag/python
     # /blog/xiaohei/category/技術
     # /blog/xiaohei/archive/2018-05

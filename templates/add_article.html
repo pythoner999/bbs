@@ -11,24 +11,71 @@
                 {% csrf_token %}
                 <div style="margin-top: 15px">
                     <label for="title">文章標題</label>
-                    <input type="text" id="title" name="title" class="form-control" style="width: 50%" placeholder="文章標題">
+                    <input type="text" id="title" name="title" class="form-control" style="width: 55%"
+                           placeholder="文章標題">
                 </div>
                 <div style="margin-top: 15px">
                     <label for="category" style="display: block">類別</label>
-                    <input type="text" id="category" name="category" class="form-control category-input" style="width: 30%" placeholder="填寫新的類別" >
-                    <button type="button" class="btn  btn-default" ><i class="fa fa-plus"></i>&nbsp;&nbsp;使用舊有的類別</button>
+                    <input type="text" id="category" name="category" class="form-control category-input"
+                           style="width: 30%" placeholder="填寫新的類別">
+                    <!--<button type="button" class="btn  btn-default"><i class="fa fa-plus"></i>&nbsp;&nbsp;使用舊有的類別</button>-->
+                    <select id="category-select" class="btn  btn-default">
+                        <option selected hidden>&#xf067;&nbsp;&nbsp;使用舊有的類別</option>
+                        {% for category in category_list %}
+                          <option value="{{category.title}}">&nbsp;&nbsp;{{ forloop.counter }}.&nbsp;&nbsp;{{category.title}}</option>
+                        {% endfor %}
+                    </select>
                 </div>
                 <div style="margin-top: 15px">
                     <label for="tag" style="display: block">標籤</label>
-                    <input type="text" id="tag" name="tag" class="form-control category-input" style="width: 30%" placeholder="按右側鈕添加" disabled="disabled">
-                    <button type="button" class="btn  btn-default" ><i class="fa fa-plus"></i>&nbsp;&nbsp;可標註多個標籤</button>
+                    <input type="text" id="tag" name="tag" class="form-control category-input" style="width: 30%"
+                           placeholder="按右側鈕添加" disabled="disabled">
+                    <!--<button type="button" class="btn  btn-default"><i class="fa fa-plus"></i>&nbsp;&nbsp;可標註多個標籤-->
+                    <!--</button>-->
+
+
+                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">&nbsp;<i class="fa fa-plus"></i>
+                        &nbsp;按此標註多個標籤</button>
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="exampleModalLabel">標註標籤</h4>
+                          </div>
+                          <div class="modal-body">
+                            <form>
+                              <div class="form-group">
+                                <label for="recipient-name" class="control-label">選用舊有的標籤(可複選)</label>
+                                  <select multiple="multiple" class="form-control" id="recipient-name">
+                                      {% for tag in tag_list %}
+                                        <option value="{{tag.title}}">&nbsp;&nbsp;{{ forloop.counter }}.&nbsp;&nbsp;{{tag.title}}</option>
+                                      {% endfor %}
+                                  </select>
+                              </div>
+                              <div class="form-group">
+                                <label for="message-text" class="control-label">手動添加新的標籤
+                                    (***每個標籤以 , 分隔***)</label>
+                                <textarea class="form-control" id="message-text"></textarea>
+                              </div>
+                            </form>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                            <button type="button" class="btn btn-primary" id="multiple-add" data-dismiss="modal">添加</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
                 </div>
                 <div style="margin-top: 15px">
                     <!--<p style="margin-top: 15px">內容(TinyMCE編輯器，支持拖放/黏貼上傳圖片)</p>-->
                     <label for="article_content">分享內容</label>
-                    <textarea name="article_content" id="article_content" cols="60" rows="20" ></textarea>
+                    <textarea name="article_content" id="article_content" cols="60" rows="20"></textarea>
                 </div>
-                <input type="submit" class="btn btn-info" value="提交">
+                <button id="submit" class="btn btn-info" >提交</button>
             </form>
         </div>
 
@@ -43,10 +90,64 @@
                     extraFileUploadParams: {
                         csrfmiddlewaretoken: $("[name='csrfmiddlewaretoken']").val()
                     },
-                    filePostName: "upload_img"
+                    filePostName: "upload_img",
+                    afterBlur: function () {this.sync();}
 
                 });
             });
+
+
+
+
+
+            $("#category-select option").on("click", function () {
+                var selected_value = $(this).val();
+                $("#category").val(selected_value);
+            });
+
+            $("#multiple-add").on("click", function () {
+                var multiple_selected = $("#recipient-name").val();
+                <!--console.log(multiple_selected);-->
+                var new_created = $("#message-text").val();
+                 new_created = new_created.split(",");
+                 window.all_selected = multiple_selected.concat(new_created);
+                <!--var all_selected = $.trim(all_selected)-->
+                // console.log(all_selected)
+                $("#tag").val(all_selected)
+            });
+
+
+
+            $("#submit").on("click", function () {
+                var title = $('#title').val();
+                var category = $("#category").val();
+                var article_content = $("#article_content").val();
+                console.log(window.all_selected);
+                console.log(article_content);
+                $.ajax({
+                    url: "/blog/backend/add_article/",
+                    type: "post",
+                    traditional : true,
+                    data: {
+                        title:title,
+                        category:category,
+                        all_selected:window.all_selected,
+                        article_content:article_content,
+                        csrfmiddlewaretoken: $("[name='csrfmiddlewaretoken']").val(),
+                    },
+                    success: function (data) {
+                        if (data.status) {
+                            // 有錯誤，在頁面上提示
+                            alert(data.msg);
+                        } else {
+                            // 登入成功
+                            location.href = data.msg;
+                        }
+                    }
+                });
+            });
+
+
         </script>
 
         {% endblock %}
