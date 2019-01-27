@@ -101,7 +101,9 @@ def register(request):
             # 校驗通過，去數據庫創建一個新用戶
             form_obj.cleaned_data.pop("re_password")
             avatar_img = request.FILES.get("avatar")
-            models.UserInfo.objects.create_user(**form_obj.cleaned_data, avatar=avatar_img)
+            blog_title = form_obj.cleaned_data.pop('blog_title')
+            blog_obj = models.Blog.objects.create(title=blog_title, site=form_obj.cleaned_data.get('username'))
+            models.UserInfo.objects.create_user(**form_obj.cleaned_data, avatar=avatar_img, blog=blog_obj)
             ret["msg"] = "/index/"
             return JsonResponse(ret)
         else:
@@ -268,25 +270,27 @@ def add_article(request):
             if tag.name in ["script", "link"]:
                 tag.decompose()
         ret = {"status": 0, "msg": ""}
+        # try:
         try:
-            try:
-                category_obj = models.Category.objects.create(title=category, blog=blog)
-            except:
-                pass
+            category_obj = models.Category.objects.create(title=category, blog=blog)
             article_obj = models.Article.objects.create(user=user, title=title, desc=desc, category=category_obj)
-            models.ArticleDetail.objects.create(content=str(bs), article=article_obj)
-            for tag in tag_list:
-                tag = tag.strip()
-                if tag:
-                    try:
-                        tag_obj = models.Tag.objects.create(title=tag, blog=blog)
-                    except:
-                        pass
+        except:
+            category_obj = models.Category.objects.filter(title=category, blog=blog).first()
+            article_obj = models.Article.objects.create(user=user, title=title, desc=desc, category=category_obj)
+        models.ArticleDetail.objects.create(content=str(bs), article=article_obj)
+        for tag in tag_list:
+            tag = tag.strip()
+            if tag:
+                try:
+                    tag_obj = models.Tag.objects.create(title=tag, blog=blog)
                     models.Article2Tag.objects.create(article=article_obj, tag=tag_obj)
-        except Exception as e:
-            ret["status"] = 1
-            ret["msg"] = "添加失敗！"
-            return JsonResponse(ret)
+                except:
+                    tag_obj = models.Tag.objects.filter(title=tag, blog=blog).first()
+                    models.Article2Tag.objects.create(article=article_obj, tag=tag_obj)
+        # except Exception as e:
+        #     ret["status"] = 1
+        #     ret["msg"] = "添加失敗！"
+        #     return JsonResponse(ret)
         ret["msg"] = "/blog/"+request.user.blog.site
         return JsonResponse(ret)
     blog = request.user.blog

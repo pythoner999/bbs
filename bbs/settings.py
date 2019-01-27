@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'bbs.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'bbs',
+        'NAME': 'bbs2',
         'USER': 'root',
         'PASSWORD': 'root',
         'HOST': '192.168.0.110',

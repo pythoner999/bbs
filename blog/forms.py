@@ -60,6 +60,19 @@ class RegForm(forms.Form):
         }
     )
 
+    blog_title = forms.CharField(
+        max_length=30,
+        label="博客標題",
+        error_messages={
+            "max_length": "博客標題最長30位",
+            "required": "博客標題不能為空",
+        },
+
+        widget=forms.widgets.TextInput(
+            attrs={"class": "form-control"},
+        )
+    )
+
     # 重寫username字段的局部鉤子
     def clean_username(self):
         username = self.cleaned_data.get("username")

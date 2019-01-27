@@ -31,7 +31,7 @@ class Blog(models.Model):
     nid = models.AutoField(primary_key=True)
     title = models.CharField(max_length=64)  # 個人博客標題
     site = models.CharField(max_length=32, unique=True)  # 個人博客後綴
-    theme = models.CharField(max_length=32)  # 博客主題（css樣式）
+    theme = models.CharField(max_length=32, null=True, blank=True)  # 博客主題（css樣式）
 
     def __str__(self):
         return self.title
