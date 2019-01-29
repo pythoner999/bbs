@@ -65,15 +65,51 @@
                     <!--Panel content-->
                 <!--</div>-->
             <!--</div>-->
+            {% if request.user.username %}
+                <a href="/blog/backend/add_article/"><button type="button" class="btn  write-article" ><i class="fa fa-plus"></i>&nbsp;&nbsp;寫新文章</button></a>
 
-            <a href="/blog/backend/add_article/"><button type="button" class="btn  write-article" ><i class="fa fa-plus"></i>&nbsp;&nbsp;寫新文章</button></a>
+                <a href="/blog/{{ request.user.blog.site}}" ><button style="margin-top:20px" type="button" class="btn  write-article" ><i class="fa fa-home" aria-hidden="true"></i>&nbsp;&nbsp;個人主頁</button></a>
 
-            <a href="/blog/{{ request.user.blog.site}}" ><button style="margin-top:20px" type="button" class="btn  write-article" ><i class="fa fa-home" aria-hidden="true"></i>&nbsp;&nbsp;個人主頁</button></a>
+                <a href="/blog/backend/style/" ><button style="margin-top:20px" type="button" class="btn  write-article" ><i class="fa fa-paint-brush" aria-hidden="true"></i>&nbsp;&nbsp;博客彩繪</button></a>
+            {% else %}
+                <button style="margin-top:10px" type="button" class="btn  write-article" data-toggle="popover" data-placement="bottom"
+                    data-content=" 請先登入！">
+                    <i class="fa fa-plus"></i>&nbsp;&nbsp;寫新文章</button>
 
-            <a href="/blog/backend/style/" ><button style="margin-top:20px" type="button" class="btn  write-article" ><i class="fa fa-paint-brush" aria-hidden="true"></i>&nbsp;&nbsp;博客彩繪</button></a>
+                <button style="margin-top:20px" type="button" class="btn  write-article"  data-toggle="popover" data-placement="bottom"
+                    data-content=" 請先登入！">
+                    <i class="fa fa-home" aria-hidden="true"></i>&nbsp;&nbsp;個人主頁</button>
+
+                <button style="margin-top:20px" type="button" class="btn  write-article"  data-toggle="popover" data-placement="bottom"
+                    data-content=" 請先登入！">
+                    <i class="fa fa-paint-brush" aria-hidden="true"></i>&nbsp;&nbsp;博客彩繪</button>
+
+            {% endif %}
+
         </div>
     </div>
 </div>
+
+<style>
+    body{
+        padding-top: 3%;
+    }
+</style>
+
+<script>
+
+    $(function () {
+        $('[data-toggle="popover"]').popover()
+    })
+    
+    $('button').on('click', function () {
+        var xxx = this;
+        setTimeout( function () {
+            $(xxx).popover('hide')
+        }, 3000)
+    })
+
+</script>
 <!-- 主頁面 结束-->
 
 

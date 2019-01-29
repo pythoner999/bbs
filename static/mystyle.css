@@ -94,8 +94,8 @@
     margin-top: 50px;
 }
 
-.article-title {
-    font-size: 18px;
+p.article-title a{
+    font-size: 1.5em;
 }
 
 
@@ -176,4 +176,18 @@ input.author{
 
 select {
   font-family: 'FontAwesome', 'Second Font name'
+}
+
+.xxxx{
+    border-width: 0;
+    color:gray;
+    background-color: white;
+    border-radius: 20%;
+    opacity: 0;
+    margin-left: 5%;
+
+}
+
+.xxxx:hover{
+    opacity: 1;
 }

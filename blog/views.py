@@ -10,6 +10,7 @@ from bbs import settings
 import logging
 import json
 import os
+import re
 
 # 生成一個logger實例，專門用來記錄日誌
 logger = logging.getLogger(__name__)
@@ -281,12 +282,23 @@ def add_article(request):
         for tag in tag_list:
             tag = tag.strip()
             if tag:
-                try:
-                    tag_obj = models.Tag.objects.create(title=tag, blog=blog)
-                    models.Article2Tag.objects.create(article=article_obj, tag=tag_obj)
-                except:
-                    tag_obj = models.Tag.objects.filter(title=tag, blog=blog).first()
-                    models.Article2Tag.objects.create(article=article_obj, tag=tag_obj)
+                if '，' in tag:
+                    tag_mini_list = tag.split('，')
+                    for mini_tag in tag_mini_list:
+                        if mini_tag:
+                            try:
+                                tag_obj = models.Tag.objects.create(title=mini_tag, blog=blog)
+                                models.Article2Tag.objects.create(article=article_obj, tag=tag_obj)
+                            except:
+                                tag_obj = models.Tag.objects.filter(title=mini_tag, blog=blog).first()
+                                models.Article2Tag.objects.create(article=article_obj, tag=tag_obj)
+                else:
+                    try:
+                        tag_obj = models.Tag.objects.create(title=tag, blog=blog)
+                        models.Article2Tag.objects.create(article=article_obj, tag=tag_obj)
+                    except:
+                        tag_obj = models.Tag.objects.filter(title=tag, blog=blog).first()
+                        models.Article2Tag.objects.create(article=article_obj, tag=tag_obj)
         # except Exception as e:
         #     ret["status"] = 1
         #     ret["msg"] = "添加失敗！"
@@ -313,6 +325,36 @@ def upload(request):
 
 
 def style(request):
-    return render(request,"style.html")
+    if request.method == 'POST':
+        ret = {"status":0, "msg":""}
+        header = request.POST.get("header-color")
+        content = request.POST.get("content-color")
+        title = request.POST.get("title-color")
+        file = request.user.username+".css"
+        path = os.path.join(settings.STATICFILES_DIRS[0], "theme", file)
+        with open(path, "w") as f:
+            f.write(".header {background-color: " + header + ";}"+
+                    "body {background-color: " + content + ";}"+
+                    "p.article-title {font-color: " + title + ";}"
+                    )
+        blog = request.user.blog
+        blog.theme = file
+        blog.save()
+        ret["hint"] = "設定成功！"
+        ret["msg"] = "/index/"
+        return JsonResponse(ret)
+    color_demo = {"header":'#5bc0de',"content":'#ffffff',"title":'#337ab7'}
+    theme = request.user.blog.theme
+    if theme:
+        path = os.path.join(settings.STATICFILES_DIRS[0], "theme", theme)
+        with open(path,'r')as f:
+            text = f.read()
+
+        rule = re.compile(r"\.header \{background-color: (?P<header>.+?);\}body \{background-color: (?P<content>.+?);\}p\.article-title \{font-color: (?P<title>.+?);\}")
+        result = rule.search(text)
+        color_demo['header'] = result.group('header')
+        color_demo['content'] = result.group('content')
+        color_demo['title'] = result.group('title')
+    return render(request, "style.html", color_demo)
 
 

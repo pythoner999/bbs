@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>歡迎註冊</title>
-    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/static/mystyle.css">
-</head>
-<body>
+{% extends 'base_bbs.html' %}
+
+
+{% block page-main %}
+
 
 <div class="container">
     <div class="row">
@@ -158,5 +154,5 @@
         })
     })
 </script>
-</body>
-</html>
+
+{% endblock %}

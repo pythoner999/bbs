@@ -6,18 +6,18 @@
 <div class="container">
     <div class="row">
         <div class="col-md-offset-2 col-md-8">
-            <h2><strong style="color:black">添加文章</strong></h2>
+            <!--<h3><strong style="color:black">寫新文章</strong></h3>-->
             <form action="" method="post">
                 {% csrf_token %}
                 <div style="margin-top: 15px">
                     <label for="title">文章標題</label>
-                    <input type="text" id="title" name="title" class="form-control" style="width: 55%"
+                    <input type="text" id="title" name="title" class="form-control" style="width: 100%"
                            placeholder="文章標題">
                 </div>
                 <div style="margin-top: 15px">
                     <label for="category" style="display: block">類別</label>
                     <input type="text" id="category" name="category" class="form-control category-input"
-                           style="width: 30%" placeholder="填寫新的類別">
+                           style="width: 77%" placeholder="填寫新的類別">
                     <!--<button type="button" class="btn  btn-default"><i class="fa fa-plus"></i>&nbsp;&nbsp;使用舊有的類別</button>-->
                     <select id="category-select" class="btn  btn-default">
                         <option selected hidden>&#xf067;&nbsp;&nbsp;使用舊有的類別</option>
@@ -28,7 +28,7 @@
                 </div>
                 <div style="margin-top: 15px">
                     <label for="tag" style="display: block">標籤</label>
-                    <input type="text" id="tag" name="tag" class="form-control category-input" style="width: 30%"
+                    <input type="text" id="tag" name="tag" class="form-control category-input" style="width: 78%"
                            placeholder="按右側鈕添加" disabled="disabled">
                     <!--<button type="button" class="btn  btn-default"><i class="fa fa-plus"></i>&nbsp;&nbsp;可標註多個標籤-->
                     <!--</button>-->
@@ -75,7 +75,12 @@
                     <label for="article_content">分享內容</label>
                     <textarea name="article_content" id="article_content" cols="60" rows="20"></textarea>
                 </div>
-                <button id="submit" class="btn btn-info" >提交</button>
+
+                <!--<div style="margin: 10px auto;">-->
+                <div style="text-align: center; margin-top: 10px; margin-bottom: 10px" >
+                    <button id="submit" class="btn btn-info" >寫新文章</button>
+                </div>
+
             </form>
         </div>
 

@@ -20,79 +20,103 @@
         </div>
 
     </div>
-    <p>評論樹</p>
+    <h4><strong>{{ comment_list|length }}條評論</strong></h4>
 
-    <div class="comment_tree">
+    <!--<div class="comment_tree">-->
 
-    </div>
+    <!--</div>-->
     <hr>
-    <p>評論列表</p>
-    <ul class="comment_list">
+    <!--<p>評論列表</p>-->
+    <div class="">
+    <ul class="comment_list" >
         {% for comment in comment_list %}
             <li class="list-group-item">
-                <div>
-                    <a href="">#{{ forloop.counter }}樓</a> &nbsp;&nbsp;
-                    <span style="color: gray">{{ comment.create_time|date:"Y-m-d H:i" }}</span> &nbsp;&nbsp;
-                    <a href=""><span>{{ comment.user.username }}</span></a>
-                    <a class="pull-right reply_btn" username="{{ comment.user.username }}"
-                       comment_pk="{{ comment.pk }}"><span>回復</span></a>
+                <div id="first-row" fpk="{{ comment.pk }}">
+                    <!--<a href="">#{{ forloop.counter }}樓</a> &nbsp;&nbsp;-->
+                    <!--<span style="color: gray">{{ comment.create_time|date:"Y-m-d H:i" }}</span> &nbsp;&nbsp;-->
+
+                        <a href="#">
+                            <img class="" src="/media/{{ comment.user.avatar }}"  style="width: 30px; height: 30px">
+                        </a>
+
+                        <a><span style="font-size: 1.2em">&nbsp;&nbsp;{{ comment.user.username }}</span></a>
+                    <!--<a class="pull-right reply_btn" username="{{ comment.user.username }}"-->
+                       <!--comment_pk="{{ comment.pk }}"><span>回復</span></a>-->
+                        <span class="pull-right" style="color:gray;">{{ comment.create_time|date:"Y-m-d H:i" }}</span>
                 </div>
                 {% if comment.parent_comment_id %}
-                    <div class="pid_info well">
-                        <p> {{ comment.parent_comment.user.username }}:
-                            &nbsp;&nbsp;&nbsp;{{ comment.parent_comment.content }} </p>
+                    <!--<div class="pid_info well">-->
+                        <!--<p> {{ comment.parent_comment.user.username }}:-->
+                            <!--&nbsp;&nbsp;&nbsp;{{ comment.parent_comment.content }} </p>-->
+                    <!--</div>-->
+                    <div class="con">
+                        <p style="margin-left: 6%">
+                            {{ comment.content }}
+                        </p>
+                    </div>
+                    <script>
+                        $('[fpk = "{{comment.pk}}"]').append("<span style='font-size: 1.2em'>&nbsp;<span style='color: gray;'>回復</span>&nbsp;{{ comment.parent_comment.user.username}}</span>")
+                    </script>
+                {% else %}
+                    <div class="con">
+                        <p style="margin-left: 6%">
+                            {{ comment.content }}
+                        </p>
                     </div>
                 {% endif %}
-
-                <div class="con">
-                    <p>
-                        {{ comment.content }}
-                    </p>
+                <div>
+                    <button class="xxxx" type="button"><i class="fa fa-reply" aria-hidden="true"></i>&nbsp;回復</button>
                 </div>
             </li>
+
+
         {% endfor %}
+        <li>
+            {% if request.user.username %}
+                <div class="div_comment" style="margin-top: 25px">
+                    <!--<label>暱稱：</label>-->
+                    <!--<input type="text" id="tbCommentAuthor" class="author" disabled="disabled" size="50"-->
+                                 <!--value="{{ request.user.username }}">-->
+                    <p style="margin-top: 15px"><label for="comment_content">評論內容</label></p>
+                    <textarea name="" id="comment_content" cols="60" rows="10"></textarea>
+                    <p>
+                        <button class="btn btn-primary" id="comment_btn">提交評論</button>
+                    </p>
+
+                </div>
+            {% else %}
+                <a style="margin-bottom: 60px" href="/login/">評論前，請先按此登入</a>
+                <p></p>
+            {% endif %}
+        </li>
     </ul>
+    </div>
 
-    {% if request.user.username %}
-        <div class="div_comment" style="margin-top: 25px">
-            <label>暱稱：</label>
-            <input type="text" id="tbCommentAuthor" class="author" disabled="disabled" size="50"
-                         value="{{ request.user.username }}">
-            <p style="margin-top: 15px"><label for="comment_content">評論內容</label></p>
-            <textarea name="" id="comment_content" cols="60" rows="10"></textarea>
-            <p>
-                <button class="btn btn-primary" id="comment_btn">提交評論</button>
-            </p>
 
-        </div>
-    {% else %}
-        <a style="margin-bottom: 60px" href="/login/">評論前，請先按此登入</a>
-        <p></p>
-    {% endif %}
 
 
 
     <script>
         // 獲取評論數據，展示評論樹結構
-        $.ajax({
-            url: "/blog/comment_tree/" + '{{ article.pk }}/',
-            success: function (data) {
-                console.log(data);
-
-                $.each(data, function (index, comment_dict) {
-                    var s = '<div class="comment_item" comment_id=' + comment_dict.pk + '> <span class="content">' + comment_dict.content + '</span> </div>'
-                    if (comment_dict.parent_comment_id) {
-                        // 子評論
-                        var pid=comment_dict.parent_comment_id;
-                        $("[comment_id="+pid+"]").append(s);
-                    }
-                    else {   //  根評論
-                        $(".comment_tree").append(s);
-                    }
-                })
-
-            }
-        });
+        // $.ajax({
+        //     url: "/blog/comment_tree/" + '{{ article.pk }}/',
+        //     success: function (data) {
+        //         console.log(data);
+        //
+        //         $.each(data, function (index, comment_dict) {
+        //             var s = '<div class="comment_item" comment_id=' + comment_dict.pk + '> <span class="content">' + comment_dict.content + '</span> </div>'
+        //             if (comment_dict.parent_comment_id) {
+        //                 // 子評論
+        //                 var pid=comment_dict.parent_comment_id;
+        //                 $("[comment_id="+pid+"]").append(s);
+        //             }
+        //             else {   //  根評論
+        //                 $(".comment_tree").append(s);
+        //             }
+        //         })
+        //
+        //     }
+        // });
 
 
         // 提交評論

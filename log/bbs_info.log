@@ -3633,3 +3633,288 @@ django.db.utils.IntegrityError: (1048, "Column 'tag_id' cannot be null")
 [2019-01-28 00:10:13,832][Thread-218:25676][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
 [2019-01-28 00:21:15,341][Thread-269:19060][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
 [2019-01-28 00:27:01,516][Thread-278:25460][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-28 12:43:04,723][Thread-9:14496][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-28 12:52:44,326][Thread-26:30528][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-28 13:01:59,010][Thread-55:13752][task_id:django.request][base.py:152][WARNING][Not Found: /blog/]
+[2019-01-28 13:02:10,797][Thread-57:27356][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/add_article/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 296, in add_article
+    blog = request.user.blog
+  File "C:\Python36\lib\site-packages\django\utils\functional.py", line 239, in inner
+    return func(self._wrapped, *args)
+AttributeError: 'AnonymousUser' object has no attribute 'blog'
+[2019-01-28 15:34:56,621][Thread-6:1376][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/style/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 325, in style
+    request.user.blog.update(theme=file)
+AttributeError: 'Blog' object has no attribute 'update'
+[2019-01-28 15:38:31,496][Thread-4:26368][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/style/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 326, in style
+    blog["theme"] = file
+TypeError: 'Blog' object does not support item assignment
+[2019-01-28 15:48:11,839][Thread-8:26752][task_id:django.request][base.py:152][WARNING][Not Found: /blog]
+[2019-01-28 17:45:21,454][Thread-90:1548][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-28 17:47:48,439][Thread-95:17332][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/style/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 334, in style
+    return render(request, "style.html")
+  File "C:\Python36\lib\site-packages\django\shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Python36\lib\site-packages\django\template\loader.py", line 67, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Python36\lib\site-packages\django\template\loader.py", line 25, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: style.html
+[2019-01-28 23:10:30,775][Thread-1:17548][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/style/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 343, in style
+    p.article_title \{font-color: (?P<title>.+?);\}""")
+  File "C:\Python36\lib\re.py", line 233, in compile
+    return _compile(pattern, flags)
+  File "C:\Python36\lib\re.py", line 301, in _compile
+    p = sre_compile.compile(pattern, flags)
+  File "C:\Python36\lib\sre_compile.py", line 562, in compile
+    p = sre_parse.parse(p, flags)
+  File "C:\Python36\lib\sre_parse.py", line 855, in parse
+    p = _parse_sub(source, pattern, flags & SRE_FLAG_VERBOSE, 0)
+  File "C:\Python36\lib\sre_parse.py", line 416, in _parse_sub
+    not nested and not items))
+  File "C:\Python36\lib\sre_parse.py", line 644, in _parse
+    name = source.getuntil(">")
+  File "C:\Python36\lib\sre_parse.py", line 278, in getuntil
+    raise self.error("missing group name", 1)
+sre_constants.error: missing group name at position 32 (line 1, column 33)
+[2019-01-28 23:13:50,494][Thread-3:11012][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/style/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 345, in style
+    color_demo['header'] = result.group('header')
+AttributeError: 'NoneType' object has no attribute 'group'
+[2019-01-28 23:14:20,418][Thread-5:17084][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/style/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 345, in style
+    result = rule.search(text)
+AttributeError: 'NoneType' object has no attribute 'group'
+[2019-01-28 23:15:23,590][Thread-3:11308][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/style/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 346, in style
+    color_demo['header'] = result.group('header')
+AttributeError: 'NoneType' object has no attribute 'group'
+[2019-01-28 23:21:13,221][Thread-3:1736][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/style/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 346, in style
+    color_demo['header'] = result.group('header')
+AttributeError: 'NoneType' object has no attribute 'group'
+[2019-01-28 23:25:24,766][Thread-1:20632][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/style/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 346, in style
+    color_demo['header'] = result.group('header')
+AttributeError: 'NoneType' object has no attribute 'group'
+[2019-01-28 23:25:33,981][Thread-4:30608][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/style/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 346, in style
+    color_demo['header'] = result.group('header')
+AttributeError: 'NoneType' object has no attribute 'group'
+[2019-01-28 23:29:26,654][Thread-1:28068][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/style/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 346, in style
+    color_demo['header'] = result.group('header')
+AttributeError: 'NoneType' object has no attribute 'group'
+[2019-01-28 23:32:28,443][Thread-1:28932][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/style/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 344, in style
+    color_demo['header'] = result.group('header')
+AttributeError: 'NoneType' object has no attribute 'group'
+[2019-01-29 01:28:54,201][Thread-5:23728][task_id:django.request][base.py:152][WARNING][Not Found: /Images/icon/lightning_icon.png]
+[2019-01-29 01:28:54,235][Thread-6:14624][task_id:django.request][base.py:152][WARNING][Not Found: /Images/icon/line_icon.png]
+[2019-01-29 01:29:56,603][Thread-7:28936][task_id:django.request][base.py:152][WARNING][Not Found: /Images/icon/line_icon.png]
+[2019-01-29 01:33:57,623][Thread-8:27192][task_id:django.request][base.py:152][WARNING][Not Found: /Images/icon/line_icon.png]
+[2019-01-29 02:43:39,026][Thread-37:26424][task_id:django.request][base.py:152][WARNING][Not Found: /blog/]
+[2019-01-29 02:43:44,091][Thread-38:22372][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/style/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 347, in style
+    theme = request.user.blog.theme
+AttributeError: 'NoneType' object has no attribute 'theme'
+[2019-01-29 02:43:49,221][Thread-39:15864][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/add_article/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 309, in add_article
+    category_list = blog.category_set.all()
+AttributeError: 'NoneType' object has no attribute 'category_set'
+[2019-01-29 02:43:59,647][Thread-41:3168][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/backend/add_article/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 309, in add_article
+    category_list = blog.category_set.all()
+AttributeError: 'NoneType' object has no attribute 'category_set'
+[2019-01-29 03:18:27,037][Thread-285:23896][task_id:django.request][base.py:152][WARNING][Not Found: /blog/]
+[2019-01-29 03:21:08,580][Thread-314:28992][task_id:django.request][base.py:152][WARNING][Not Found: /blog/]
+[2019-01-29 03:50:25,035][Thread-61:15336][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-29 11:15:44,104][Thread-18:21688][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-29 11:30:53,842][Thread-78:13060][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-29 11:31:04,119][Thread-88:22300][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-29 11:31:59,959][Thread-107:23236][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-29 11:32:26,891][Thread-117:20420][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-29 11:32:44,318][Thread-127:11888][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-29 11:36:25,289][Thread-150:15656][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-29 11:37:19,156][Thread-189:7128][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-29 11:38:42,863][Thread-218:11776][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-29 11:39:32,081][Thread-236:8400][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-29 11:39:35,502][Thread-241:18556][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-29 11:40:01,968][Thread-250:8460][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-29 11:41:28,212][Thread-260:29008][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-29 11:48:36,922][Thread-275:24476][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/dreamerss/article/1/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 214, in article_detail
+    "comment_list":comment_list
+  File "C:\Python36\lib\site-packages\django\shortcuts.py", line 30, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "C:\Python36\lib\site-packages\django\template\loader.py", line 67, in render_to_string
+    template = get_template(template_name, using=using)
+  File "C:\Python36\lib\site-packages\django\template\loader.py", line 21, in get_template
+    return engine.get_template(template_name)
+  File "C:\Python36\lib\site-packages\django\template\backends\django.py", line 39, in get_template
+    return Template(self.engine.get_template(template_name), self)
+  File "C:\Python36\lib\site-packages\django\template\engine.py", line 162, in get_template
+    template, origin = self.find_template(template_name)
+  File "C:\Python36\lib\site-packages\django\template\engine.py", line 136, in find_template
+    name, template_dirs=dirs, skip=skip,
+  File "C:\Python36\lib\site-packages\django\template\loaders\base.py", line 44, in get_template
+    contents, origin, origin.template_name, self.engine,
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 191, in __init__
+    self.nodelist = self.compile_nodelist()
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 230, in compile_nodelist
+    return parser.parse()
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 515, in parse
+    raise self.error(token, e)
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 513, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Python36\lib\site-packages\django\template\loader_tags.py", line 312, in do_extends
+    nodelist = parser.parse()
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 515, in parse
+    raise self.error(token, e)
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 513, in parse
+    compiled_result = compile_func(self, token)
+  File "C:\Python36\lib\site-packages\django\template\loader_tags.py", line 255, in do_block
+    nodelist = parser.parse(('endblock',))
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 486, in parse
+    raise self.error(token, e)
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 484, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 600, in compile_filter
+    return FilterExpression(token, self)
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 694, in __init__
+    filter_func = parser.find_filter(filter_name)
+  File "C:\Python36\lib\site-packages\django\template\base.py", line 606, in find_filter
+    raise TemplateSyntaxError("Invalid filter: '%s'" % filter_name)
+django.template.exceptions.TemplateSyntaxError: Invalid filter: 'count'
+[2019-01-29 12:14:15,420][Thread-376:9784][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-29 12:15:03,133][Thread-391:2220][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-29 13:40:41,275][Thread-1156:19312][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-29 13:41:22,125][Thread-1171:9924][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-29 13:56:01,164][Thread-1392:21964][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-29 14:16:46,713][Thread-1431:2948][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-29 16:50:11,537][Thread-1620:11828][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-29 16:50:30,082][Thread-1631:15908][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-29 16:54:37,230][Thread-1657:1748][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-29 16:55:52,347][Thread-1682:15412][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
