@@ -248,6 +248,7 @@ def comment(request):
     response["content"] = comment_obj.content
     response["username"] = comment_obj.user.username
     response["avatar"] = comment_obj.user.avatar.name
+    response["pid"] = comment_obj.parent_comment_id
     return JsonResponse(response)
 
 

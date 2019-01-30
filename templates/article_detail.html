@@ -33,23 +33,13 @@
         {% for comment in comment_list %}
             <li class="list-group-item">
                 <div id="first-row" fpk="{{ comment.pk }}" >
-                    <!--<a href="">#{{ forloop.counter }}樓</a> &nbsp;&nbsp;-->
-                    <!--<span style="color: gray">{{ comment.create_time|date:"Y-m-d H:i" }}</span> &nbsp;&nbsp;-->
-
-                        <a href="#">
-                            <img class="" src="/media/{{ comment.user.avatar.name }}"  style="width: 30px; height: 30px">
-                        </a>
-
-                        <a><span style="font-size: 1.2em">&nbsp;&nbsp;{{ comment.user.username }}</span></a>
-                    <!--<a class="pull-right reply_btn" username="{{ comment.user.username }}"-->
-                       <!--comment_pk="{{ comment.pk }}"><span>回復</span></a>-->
-                        <span class="pull-right" style="color:gray;">{{ comment.create_time|date:"Y-m-d H:i" }}</span>
+                    <a href="#">
+                        <img class="" src="/media/{{ comment.user.avatar.name }}"  style="width: 30px; height: 30px">
+                    </a>
+                    <a><span style="font-size: 1.2em">&nbsp;&nbsp;{{ comment.user.username }}</span></a>
+                    <span class="pull-right" style="color:gray;">{{ comment.create_time|date:"Y-m-d H:i" }}</span>
                 </div>
                 {% if comment.parent_comment_id %}
-                    <!--<div class="pid_info well">-->
-                        <!--<p> {{ comment.parent_comment.user.username }}:-->
-                            <!--&nbsp;&nbsp;&nbsp;{{ comment.parent_comment.content }} </p>-->
-                    <!--</div>-->
                     <div class="con">
                         <p style="margin-left: 6%">
                             {{ comment.content }}
@@ -67,7 +57,7 @@
                 {% endif %}
                 <div>
                     {% if request.user.username %}
-                        <button class="xxxx" type="button" ><i class="fa fa-reply" aria-hidden="true"></i>&nbsp;回復</button>
+                        <button class="xxxx" type="button" pid="{{comment.pk}}"><i class="fa fa-reply" aria-hidden="true"></i>&nbsp;回復</button>
                     {% else %}
                         <a class = "unlogin" href="/login/">評論前，請先按此登入</a>
                     {% endif %}
@@ -77,17 +67,12 @@
     </div>
         <li class="list-group-item">
             {% if request.user.username %}
-
-                    <!--<label>暱稱：</label>-->
-                    <!--<input type="text" id="tbCommentAuthor" class="author" disabled="disabled" size="50"-->
-                                 <!--value="{{ request.user.username }}">-->
-
                 <div>
                     <div class="col-sm-11">
-                        <input type="text" name="" id="comment_content" class="form-control" placeholder="寫下你的評論。。。"
+                        <input type="text" name=""  class="form-control" placeholder="寫下你的評論。。。"
                                style="background-color: gainsboro;" >
                     </div>
-                    <button class="btn btn-primary" id="comment_btn" >發佈</button>
+                    <button class="btn btn-primary comment_btn" pid="">發佈</button>
                 </div>
 
             {% else %}
@@ -126,58 +111,17 @@
         // });
 
 
-        // 提交評論
-        // var pid = "";
-        $("#comment_btn").click(function () {
 
-            var article_id = $(".info").attr("article_id");
-            var content = $("#comment_content").val();
-            // if (pid) {
-            //     var index = content.indexOf("\n");
-            //     content = content.slice(index + 1)
-            // }
-            $.ajax({
-                url: "/blog/comment/",
-                type: "post",
-                data: {
-                    article_id: article_id,
-                    content: content,
-                    pid: "",
-                    csrfmiddlewaretoken: $("[name='csrfmiddlewaretoken']").val(),
-                },
-                success: function (data) {
-                    // console.log(data);
-                    var create_time = data.create_time;
-                    var content = data.content;
-                    var username = data.username;
-                    var avatar = data.avatar;
-
-
-                    // var comment_li = '<li class="list-group-item"><div><span style="color: gray">' + create_time + '</span> &nbsp;&nbsp; <a href=""><span>' + username + '</span></a></div> <div class="con"> <p> ' + content + ' </p> </div> </li>';
-                    var comment_li = '<li class="list-group-item"><div><a href="#"><img class="" src="/media/' +avatar+ '"style="width: 30px; height: 30px"></a><a><span style="font-size: 1.2em">&nbsp;&nbsp;'+ username +'</span></a><span class="pull-right" style="color:gray;">' +create_time+ '</span></div><div class="con"><p style="margin-left: 6%">' +content+ '</p></div></li>';
-
-                    $("#main_li").append(comment_li);
-                    window.scrollTo(0,document.body.scrollHeight);
-                    //
-                    // // 清空文本框
-                     $("#comment_content").val("");
-                    $("#comment_content").attr('placeholder', "寫下你的評論。。。");
-                    // // 清空pid
-                    // pid = ""
-                }
-            })
-
-
-        });
 
         $(".xxxx").click(function () {
             if ($(this).find("i").hasClass('fa-reply')){
                $(this).html('<i class="fa fa-share" aria-hidden="true"></i>&nbsp;取消回復');
-               $(this).parent().parent().append('<div  parent_comment="" friend_comment="" style="margin-top: 5px" ><div class="col-sm-11" ><input type="text" name="" id="comment_content" class="form-control" placeholder="寫下你的評論。。。" style="background-color: gainsboro; " ></div><button class="btn btn-primary " id="comment_btn" >發佈</button></div>');
+               var pid = $(this).attr("pid");
+               $(this).parent().parent().append('<div style="margin-top: 5px" class="fff"><div class="col-sm-11" ><input type="text" name=""  class="form-control" placeholder="寫下你的評論。。。" style="background-color: gainsboro; " ></div><button class="btn btn-primary comment_btn" pid="' +pid+ '">發佈</button></div>');
             }else {
                 $(this).html('<i class="fa fa-reply aria-hidden="true"></i>&nbsp;回復');
-                $(this).parent().next().remove();
-                // $(this).parent().next().remove();
+                $(this).parent().siblings('div.fff').remove();
+
             };
 
 
@@ -226,6 +170,8 @@
     <div class="info" article_id="{{ article.pk }}" username="{{ request.user.username }}"></div>
 
     {% csrf_token %}
+
+    <script src="/static/js/comment_btn.js"></script>
 
     <script src="/static/js/article_detail.js"></script>
 

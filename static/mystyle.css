@@ -202,3 +202,24 @@ select {
 .unlogin:hover{
     opacity: 1;
 }
+
+.zzz{
+    /*position: fixed;*/
+    /*top: 0; !* Position the navbar at the top of the page *!*/
+    /*width: 100%;*/
+    border: 1px solid black;
+    border-radius: 5%;
+    background: white;
+    left: 50%;
+    position: absolute;
+    top: 28%;
+    transform: translate(-32%);
+    background-color: #fff;
+    padding: 15px;
+    box-shadow:1px 3px 10px rgba(0, 0, 0, 0.34);
+    opacity: .2;
+}
+
+.zzz:hover{
+    opacity: 1;
+}
