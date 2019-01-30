@@ -3918,3 +3918,458 @@ django.template.exceptions.TemplateSyntaxError: Invalid filter: 'count'
 [2019-01-29 16:50:30,082][Thread-1631:15908][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
 [2019-01-29 16:54:37,230][Thread-1657:1748][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
 [2019-01-29 16:55:52,347][Thread-1682:15412][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-29 23:18:26,704][Thread-9:29156][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-30 00:21:59,710][Thread-14:26488][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/comment/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 250, in comment
+    response["avatar"] = comment.user.avatar
+AttributeError: 'function' object has no attribute 'user'
+[2019-01-30 00:22:09,853][Thread-15:20888][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/comment/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 250, in comment
+    response["avatar"] = comment.user.avatar
+AttributeError: 'function' object has no attribute 'user'
+[2019-01-30 00:22:42,138][Thread-18:1720][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/comment/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Python36\lib\site-packages\django\db\backends\mysql\base.py", line 101, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Python36\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "C:\Python36\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 516, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 727, in _read_query_result
+    result.read()
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 1066, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 683, in _read_packet
+    packet.check_error()
+  File "C:\Python36\lib\site-packages\pymysql\protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Python36\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.IntegrityError: (1048, "Column 'article_id' cannot be null")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 243, in comment
+    comment_obj = models.Comment.objects.create(article_id=article_id, user_id=user_pk, content=content)
+  File "C:\Python36\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Python36\lib\site-packages\django\db\models\query.py", line 394, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Python36\lib\site-packages\django\db\models\base.py", line 808, in save
+    force_update=force_update, update_fields=update_fields)
+  File "C:\Python36\lib\site-packages\django\db\models\base.py", line 838, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "C:\Python36\lib\site-packages\django\db\models\base.py", line 924, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "C:\Python36\lib\site-packages\django\db\models\base.py", line 963, in _do_insert
+    using=using, raw=raw)
+  File "C:\Python36\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Python36\lib\site-packages\django\db\models\query.py", line 1076, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "C:\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 1112, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Python36\lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "C:\Python36\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Python36\lib\site-packages\django\db\utils.py", line 94, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "C:\Python36\lib\site-packages\django\utils\six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Python36\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Python36\lib\site-packages\django\db\backends\mysql\base.py", line 101, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Python36\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "C:\Python36\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 516, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 727, in _read_query_result
+    result.read()
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 1066, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 683, in _read_packet
+    packet.check_error()
+  File "C:\Python36\lib\site-packages\pymysql\protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Python36\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+django.db.utils.IntegrityError: (1048, "Column 'article_id' cannot be null")
+[2019-01-30 00:32:39,512][Thread-22:2472][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/comment/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 250, in comment
+    response["avatar"] = comment.user.avatar
+AttributeError: 'function' object has no attribute 'user'
+[2019-01-30 00:35:34,552][Thread-25:8028][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/comment/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 250, in comment
+    response["avatar"] = comment.user.avatar
+AttributeError: 'function' object has no attribute 'user'
+[2019-01-30 00:35:53,776][Thread-27:16268][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/comment/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Python36\lib\site-packages\django\db\backends\mysql\base.py", line 101, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Python36\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "C:\Python36\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 516, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 727, in _read_query_result
+    result.read()
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 1066, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 683, in _read_packet
+    packet.check_error()
+  File "C:\Python36\lib\site-packages\pymysql\protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Python36\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.IntegrityError: (1048, "Column 'article_id' cannot be null")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 243, in comment
+    comment_obj = models.Comment.objects.create(article_id=article_id, user_id=user_pk, content=content)
+  File "C:\Python36\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Python36\lib\site-packages\django\db\models\query.py", line 394, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Python36\lib\site-packages\django\db\models\base.py", line 808, in save
+    force_update=force_update, update_fields=update_fields)
+  File "C:\Python36\lib\site-packages\django\db\models\base.py", line 838, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "C:\Python36\lib\site-packages\django\db\models\base.py", line 924, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "C:\Python36\lib\site-packages\django\db\models\base.py", line 963, in _do_insert
+    using=using, raw=raw)
+  File "C:\Python36\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Python36\lib\site-packages\django\db\models\query.py", line 1076, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "C:\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 1112, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Python36\lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "C:\Python36\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Python36\lib\site-packages\django\db\utils.py", line 94, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "C:\Python36\lib\site-packages\django\utils\six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Python36\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Python36\lib\site-packages\django\db\backends\mysql\base.py", line 101, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Python36\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "C:\Python36\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 516, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 727, in _read_query_result
+    result.read()
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 1066, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 683, in _read_packet
+    packet.check_error()
+  File "C:\Python36\lib\site-packages\pymysql\protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Python36\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+django.db.utils.IntegrityError: (1048, "Column 'article_id' cannot be null")
+[2019-01-30 00:37:15,060][Thread-29:10816][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/comment/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Python36\lib\site-packages\django\db\backends\mysql\base.py", line 101, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Python36\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "C:\Python36\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 516, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 727, in _read_query_result
+    result.read()
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 1066, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 683, in _read_packet
+    packet.check_error()
+  File "C:\Python36\lib\site-packages\pymysql\protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Python36\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.IntegrityError: (1048, "Column 'article_id' cannot be null")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 243, in comment
+    comment_obj = models.Comment.objects.create(article_id=article_id, user_id=user_pk, content=content)
+  File "C:\Python36\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Python36\lib\site-packages\django\db\models\query.py", line 394, in create
+    obj.save(force_insert=True, using=self.db)
+  File "C:\Python36\lib\site-packages\django\db\models\base.py", line 808, in save
+    force_update=force_update, update_fields=update_fields)
+  File "C:\Python36\lib\site-packages\django\db\models\base.py", line 838, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "C:\Python36\lib\site-packages\django\db\models\base.py", line 924, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "C:\Python36\lib\site-packages\django\db\models\base.py", line 963, in _do_insert
+    using=using, raw=raw)
+  File "C:\Python36\lib\site-packages\django\db\models\manager.py", line 85, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "C:\Python36\lib\site-packages\django\db\models\query.py", line 1076, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "C:\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 1112, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Python36\lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "C:\Python36\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Python36\lib\site-packages\django\db\utils.py", line 94, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "C:\Python36\lib\site-packages\django\utils\six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Python36\lib\site-packages\django\db\backends\utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "C:\Python36\lib\site-packages\django\db\backends\mysql\base.py", line 101, in execute
+    return self.cursor.execute(query, args)
+  File "C:\Python36\lib\site-packages\pymysql\cursors.py", line 170, in execute
+    result = self._query(query)
+  File "C:\Python36\lib\site-packages\pymysql\cursors.py", line 328, in _query
+    conn.query(q)
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 516, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 727, in _read_query_result
+    result.read()
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 1066, in read
+    first_packet = self.connection._read_packet()
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 683, in _read_packet
+    packet.check_error()
+  File "C:\Python36\lib\site-packages\pymysql\protocol.py", line 220, in check_error
+    err.raise_mysql_exception(self._data)
+  File "C:\Python36\lib\site-packages\pymysql\err.py", line 109, in raise_mysql_exception
+    raise errorclass(errno, errval)
+django.db.utils.IntegrityError: (1048, "Column 'article_id' cannot be null")
+[2019-01-30 00:42:37,730][Thread-43:17380][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/comment/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 250, in comment
+    response["avatar"] = comment.user.avatar
+AttributeError: 'function' object has no attribute 'user'
+[2019-01-30 00:45:53,996][Thread-15:876][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/comment/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 251, in comment
+    return JsonResponse(response)
+  File "C:\Python36\lib\site-packages\django\http\response.py", line 530, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "C:\Python36\lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+  File "C:\Python36\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Python36\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Python36\lib\site-packages\django\core\serializers\json.py", line 124, in default
+    return super(DjangoJSONEncoder, self).default(o)
+  File "C:\Python36\lib\json\encoder.py", line 180, in default
+    o.__class__.__name__)
+TypeError: Object of type 'FieldFile' is not JSON serializable
+[2019-01-30 00:45:59,432][Thread-16:20700][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/comment/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 251, in comment
+    return JsonResponse(response)
+  File "C:\Python36\lib\site-packages\django\http\response.py", line 530, in __init__
+    data = json.dumps(data, cls=encoder, **json_dumps_params)
+  File "C:\Python36\lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+  File "C:\Python36\lib\json\encoder.py", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "C:\Python36\lib\json\encoder.py", line 257, in iterencode
+    return _iterencode(o, 0)
+  File "C:\Python36\lib\site-packages\django\core\serializers\json.py", line 124, in default
+    return super(DjangoJSONEncoder, self).default(o)
+  File "C:\Python36\lib\json\encoder.py", line 180, in default
+    o.__class__.__name__)
+TypeError: Object of type 'FieldFile' is not JSON serializable
+[2019-01-30 01:04:34,268][Thread-32:20280][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-30 01:14:31,804][Thread-30:4824][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-30 01:49:10,169][Thread-142:10692][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-30 03:02:23,385][Thread-217:5912][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-30 10:54:34,013][Thread-277:19092][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/dreamerss/article/14/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 582, in connect
+    **kwargs)
+  File "C:\Python36\lib\socket.py", line 724, in create_connection
+    raise err
+  File "C:\Python36\lib\socket.py", line 713, in create_connection
+    sock.connect(sa)
+socket.timeout: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\db\backends\base\base.py", line 213, in ensure_connection
+    self.connect()
+  File "C:\Python36\lib\site-packages\django\db\backends\base\base.py", line 189, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "C:\Python36\lib\site-packages\django\db\backends\mysql\base.py", line 274, in get_new_connection
+    conn = Database.connect(**conn_params)
+  File "C:\Python36\lib\site-packages\pymysql\__init__.py", line 94, in Connect
+    return Connection(*args, **kwargs)
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 327, in __init__
+    self.connect()
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 629, in connect
+    raise exc
+pymysql.err.OperationalError: (2003, "Can't connect to MySQL server on '192.168.0.110' (timed out)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 199, in article_detail
+    user = models.UserInfo.objects.filter(username=username).first()
+  File "C:\Python36\lib\site-packages\django\db\models\query.py", line 564, in first
+    objects = list((self if self.ordered else self.order_by('pk'))[:1])
+  File "C:\Python36\lib\site-packages\django\db\models\query.py", line 250, in __iter__
+    self._fetch_all()
+  File "C:\Python36\lib\site-packages\django\db\models\query.py", line 1118, in _fetch_all
+    self._result_cache = list(self._iterable_class(self))
+  File "C:\Python36\lib\site-packages\django\db\models\query.py", line 53, in __iter__
+    results = compiler.execute_sql(chunked_fetch=self.chunked_fetch)
+  File "C:\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 876, in execute_sql
+    sql, params = self.as_sql()
+  File "C:\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 441, in as_sql
+    where, w_params = self.compile(self.where) if self.where is not None else ("", [])
+  File "C:\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 373, in compile
+    sql, params = node.as_sql(self, self.connection)
+  File "C:\Python36\lib\site-packages\django\db\models\sql\where.py", line 79, in as_sql
+    sql, params = compiler.compile(child)
+  File "C:\Python36\lib\site-packages\django\db\models\sql\compiler.py", line 373, in compile
+    sql, params = node.as_sql(self, self.connection)
+  File "C:\Python36\lib\site-packages\django\db\models\lookups.py", line 169, in as_sql
+    lhs_sql, params = self.process_lhs(compiler, connection)
+  File "C:\Python36\lib\site-packages\django\db\models\lookups.py", line 162, in process_lhs
+    db_type = self.lhs.output_field.db_type(connection=connection)
+  File "C:\Python36\lib\site-packages\django\db\models\fields\__init__.py", line 644, in db_type
+    return connection.data_types[self.get_internal_type()] % data
+  File "C:\Python36\lib\site-packages\django\utils\functional.py", line 35, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\Python36\lib\site-packages\django\db\backends\mysql\base.py", line 174, in data_types
+    if self.features.supports_microsecond_precision:
+  File "C:\Python36\lib\site-packages\django\utils\functional.py", line 35, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\Python36\lib\site-packages\django\db\backends\mysql\features.py", line 53, in supports_microsecond_precision
+    return self.connection.mysql_version >= (5, 6, 4) and Database.version_info >= (1, 2, 5)
+  File "C:\Python36\lib\site-packages\django\utils\functional.py", line 35, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "C:\Python36\lib\site-packages\django\db\backends\mysql\base.py", line 385, in mysql_version
+    with self.temporary_connection() as cursor:
+  File "C:\Python36\lib\contextlib.py", line 81, in __enter__
+    return next(self.gen)
+  File "C:\Python36\lib\site-packages\django\db\backends\base\base.py", line 591, in temporary_connection
+    cursor = self.cursor()
+  File "C:\Python36\lib\site-packages\django\db\backends\base\base.py", line 254, in cursor
+    return self._cursor()
+  File "C:\Python36\lib\site-packages\django\db\backends\base\base.py", line 229, in _cursor
+    self.ensure_connection()
+  File "C:\Python36\lib\site-packages\django\db\backends\base\base.py", line 213, in ensure_connection
+    self.connect()
+  File "C:\Python36\lib\site-packages\django\db\utils.py", line 94, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "C:\Python36\lib\site-packages\django\utils\six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "C:\Python36\lib\site-packages\django\db\backends\base\base.py", line 213, in ensure_connection
+    self.connect()
+  File "C:\Python36\lib\site-packages\django\db\backends\base\base.py", line 189, in connect
+    self.connection = self.get_new_connection(conn_params)
+  File "C:\Python36\lib\site-packages\django\db\backends\mysql\base.py", line 274, in get_new_connection
+    conn = Database.connect(**conn_params)
+  File "C:\Python36\lib\site-packages\pymysql\__init__.py", line 94, in Connect
+    return Connection(*args, **kwargs)
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 327, in __init__
+    self.connect()
+  File "C:\Python36\lib\site-packages\pymysql\connections.py", line 629, in connect
+    raise exc
+django.db.utils.OperationalError: (2003, "Can't connect to MySQL server on '192.168.0.110' (timed out)")
+[2019-01-30 12:47:49,884][Thread-545:19132][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-01-30 13:07:16,735][Thread-681:19620][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]

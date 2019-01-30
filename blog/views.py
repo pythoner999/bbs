@@ -247,6 +247,7 @@ def comment(request):
     response["create_time"] = comment_obj.create_time.strftime("%Y-%m-%d")
     response["content"] = comment_obj.content
     response["username"] = comment_obj.user.username
+    response["avatar"] = comment_obj.user.avatar.name
     return JsonResponse(response)
 
 

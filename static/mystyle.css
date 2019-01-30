@@ -94,7 +94,7 @@
     margin-top: 50px;
 }
 
-p.article-title a{
+p.article-title{
     font-size: 1.5em;
 }
 
@@ -183,11 +183,22 @@ select {
     color:gray;
     background-color: white;
     border-radius: 20%;
-    opacity: 0;
+    opacity: .4;
     margin-left: 5%;
 
 }
 
 .xxxx:hover{
+    opacity: 1;
+
+}
+
+.unlogin{
+     color:gray;
+     opacity: .4;
+    margin-left: 5%;
+}
+
+.unlogin:hover{
     opacity: 1;
 }
