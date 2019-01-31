@@ -3,20 +3,74 @@
 
 {% block page-main %}
 
+<style>*{margin:0;padding:0}</style>
+
 <!--主頁面 開始-->
 <div class="container">
     <div class="row">
-        <div class="col-md-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">左側廣告欄位一</div>
+        <div class="col-md-2 ">
+            <div class="panel panel-default" style="margin-top: 5px; " id="ranking">
+                <div class="panel-heading"><span style="font-size: 1.2em; font-weight: bold;">&nbsp;&nbsp;<i class="fa fa-fire" aria-hidden="true"></i>
+                    &nbsp;哈燒排行榜&nbsp;</span></div>
                 <div class="panel-body">
-                    Panel content
-                </div>
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">左側廣告欄位二</div>
-                <div class="panel-body">
-                    Panel content
+
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true" style="margin-bottom: 0px; ">
+                        <div class="panel panel-default" >
+                            <div class="panel-heading" role="tab" id="headingOne">
+                                <h4 class="panel-title">
+                                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                                       aria-expanded="false"  aria-controls="collapseOne">
+                                        <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;觀看人次
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel"
+                                 aria-labelledby="headingOne">
+                                <div class="panel-body" >
+                                    <!--<span style="display:inline-block;">1.抖音10大網紅排名:你認識幾個？</span>2.男人夢想神位3.TikTok-->
+                                    <ol>
+                                        <li>抖音10大網紅排名:你認識幾個？</li>
+                                        <li>男人夢想神位</li>
+                                        <li>TikTok</li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingTwo">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                                       href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>&nbsp; 點讚人次
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
+                                 aria-labelledby="headingTwo">
+                                <div class="panel-body">
+                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingThree">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+                                       href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        <i class="fa fa-comments" aria-hidden="true"></i>&nbsp; 評論次數
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel"
+                                 aria-labelledby="headingThree">
+                                <div class="panel-body">
+                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -24,28 +78,30 @@
             <!-- 文章列表 開始 -->
             <div class="article-list">
                 {% for article in article_list %}
-                    <div class="article">
-                        <h4><a href="/blog/{{ article.user.username }}/article/{{ article.pk }}/">{{ article.title }}</a></h4>
-                        <div class="media">
-                            <div class="media-left">
-                                <a href="#">
-                                    <img class="media-object author-img" src="/media/{{ article.user.avatar }}" alt="...">
-                                </a>
-                            </div>
-                            <div class="media-body">
-                                <p>{{ article.desc}}</p>
-                            </div>
+                <div class="article">
+                    <h4><a href="/blog/{{ article.user.username }}/article/{{ article.pk }}/">{{ article.title }}</a>
+                    </h4>
+                    <div class="media">
+                        <div class="media-left">
+                            <a href="#">
+                                <img class="media-object author-img" src="/media/{{ article.user.avatar }}" alt="...">
+                            </a>
                         </div>
-                        <div class="article-footer">
-                            <span><a href="/blog/{{ article.user.username }}/">{{ article.user.username }}</a></span>發佈於
-                            <span>{{ article.create_time|date:'Y-m-d H:i:s' }}</span>
-{#                            <span class="glyphicon glyphicon-comment">評論({{ article.comment_count }})</span>#}
-{#                            <span class="glyphicon glyphicon-thumbs-up">點讚({{ article.up_count }})</span>#}
-                            <span><i class="fa fa-commenting-o fa-fw" aria-hidden="true"></i>評論({{ article.comment_count }})</span>
-                            <span><i class="fa fa-thumbs-o-up fa-fw" aria-hidden="true"></i>點讚({{ article.up_count }})</span>
+                        <div class="media-body">
+                            <p>{{ article.desc}}</p>
                         </div>
-                        <hr>
                     </div>
+                    <div class="article-footer">
+                        <span><a href="/blog/{{ article.user.username }}/">{{ article.user.username }}</a></span>發佈於
+                        <span>{{ article.create_time|date:'Y-m-d H:i:s' }}</span>
+                        {# <span class="glyphicon glyphicon-comment">評論({{ article.comment_count }})</span>#}
+                        {# <span class="glyphicon glyphicon-thumbs-up">點讚({{ article.up_count }})</span>#}
+                        <span><i class="fa fa-commenting-o fa-fw" aria-hidden="true"></i>評論({{ article.comment_count }})</span>
+                        <span><i class="fa fa-thumbs-o-up fa-fw"
+                                 aria-hidden="true"></i>點讚({{ article.up_count }})</span>
+                    </div>
+                    <hr>
+                </div>
                 {% endfor %}
 
             </div>
@@ -54,41 +110,58 @@
         </div>
         <div class="col-md-2">
             <!--<div class="panel panel-default">-->
-                <!--&lt;!&ndash;<div class="panel-heading">右側廣告欄位一</div>&ndash;&gt;-->
-                <!--<div class="panel-body">-->
-                    <!--<span class="write-article"><a href="/backend/add_article/">寫文章</a></span>-->
-                <!--</div>-->
+            <!--&lt;!&ndash;<div class="panel-heading">右側廣告欄位一</div>&ndash;&gt;-->
+            <!--<div class="panel-body">-->
+            <!--<span class="write-article"><a href="/backend/add_article/">寫文章</a></span>-->
+            <!--</div>-->
             <!--</div>-->
             <!--<div class="panel panel-info">-->
-                <!--<div class="panel-heading">右側廣告欄位二</div>-->
-                <!--<div class="panel-body">-->
-                    <!--Panel content-->
-                <!--</div>-->
+            <!--<div class="panel-heading">右側廣告欄位二</div>-->
+            <!--<div class="panel-body">-->
+            <!--Panel content-->
+            <!--</div>-->
             <!--</div>-->
             {% if request.user.username %}
-                <div  class="zzz">
+            <div class="zzz">
 
-                        <a href="/blog/backend/add_article/"><button style="margin:10px auto; margin-top: 0" type="button" class="btn  write-article" ><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;&nbsp;寫新文章</button></a>
+                <a href="/blog/backend/add_article/">
+                    <button style="margin:10px auto; margin-top: 0" type="button" class="btn  write-article"><i
+                            class="fa fa-plus" aria-hidden="true"></i>&nbsp;&nbsp;寫新文章
+                    </button>
+                </a>
 
-                        <a href="/blog/{{ request.user.blog.site}}" ><button style="margin:10px auto; " type="button" class="btn  write-article" ><i class="fa fa-home" aria-hidden="true"></i>&nbsp;&nbsp;個人主頁</button></a>
+                <a href="/blog/{{ request.user.blog.site}}">
+                    <button style="margin:10px auto; " type="button" class="btn  write-article"><i class="fa fa-home"
+                                                                                                   aria-hidden="true"></i>&nbsp;&nbsp;個人主頁
+                    </button>
+                </a>
 
-                        <a href="/blog/backend/style/" ><button style="margin:10px auto; margin-bottom: 0" type="button" class="btn  write-article" ><i class="fa fa-paint-brush" aria-hidden="true"></i>&nbsp;&nbsp;博客彩繪</button></a>
-                </div>
+                <a href="/blog/backend/style/">
+                    <button style="margin:10px auto; margin-bottom: 0" type="button" class="btn  write-article"><i
+                            class="fa fa-paint-brush" aria-hidden="true"></i>&nbsp;&nbsp;博客彩繪
+                    </button>
+                </a>
+            </div>
 
             {% else %}
-                 <div  class="zzz">
-                    <button style="margin:10px auto; margin-top: 0";" type="button" class="btn  write-article" data-toggle="popover" data-placement="bottom"
-                        data-content=" 請先登入！">
-                        <i class="fa fa-plus"></i>&nbsp;&nbsp;寫新文章</button>
+            <div class="zzz">
+                <button style="margin:10px auto; margin-top: 0"
+                " type="button" class="btn write-article" data-toggle="popover" data-placement="bottom"
+                data-content=" 請先登入！">
+                <i class="fa fa-plus"></i>&nbsp;&nbsp;寫新文章</button>
 
-                    <button style="margin:10px auto;" type="button" class="btn  write-article"  data-toggle="popover" data-placement="bottom"
+                <button style="margin:10px auto;" type="button" class="btn  write-article" data-toggle="popover"
+                        data-placement="bottom"
                         data-content=" 請先登入！">
-                        <i class="fa fa-home" aria-hidden="true"></i>&nbsp;&nbsp;個人主頁</button>
+                    <i class="fa fa-home" aria-hidden="true"></i>&nbsp;&nbsp;個人主頁
+                </button>
 
-                    <button style="margin:10px auto; margin-bottom: 0" type="button" class="btn  write-article"  data-toggle="popover" data-placement="bottom"
+                <button style="margin:10px auto; margin-bottom: 0" type="button" class="btn  write-article"
+                        data-toggle="popover" data-placement="bottom"
                         data-content=" 請先登入！">
-                        <i class="fa fa-paint-brush" aria-hidden="true"></i>&nbsp;&nbsp;博客彩繪</button>
-                 </div>
+                    <i class="fa fa-paint-brush" aria-hidden="true"></i>&nbsp;&nbsp;博客彩繪
+                </button>
+            </div>
             {% endif %}
 
         </div>
@@ -96,7 +169,7 @@
 </div>
 
 <style>
-    body{
+    body {
         padding-top: 3%;
     }
 </style>
@@ -106,16 +179,17 @@
     $(function () {
         $('[data-toggle="popover"]').popover()
     })
-    
+
     $('button').on('click', function () {
         var xxx = this;
-        setTimeout( function () {
+        setTimeout(function () {
             $(xxx).popover('hide')
         }, 3000)
     })
 
-    $(window).scroll(function(){
+    $(window).scroll(function () {
         $(".zzz").css({"margin-top": ($(window).scrollTop()) + "px",});
+        $("#ranking").css({"margin-top": ($(window).scrollTop()) + "px",});
     });
 
 </script>

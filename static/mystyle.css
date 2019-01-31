@@ -224,3 +224,22 @@ select {
     opacity: 1;
 }
 
+#ranking{
+    width: 100%;
+    /*border: 1px solid black;*/
+    border-radius: 5%;
+    /*background: white;*/
+    /*left: 50%;*/
+    right: 30%;
+    position: absolute;
+    /*top: 28%;*/
+    /*transform: translate(-66%);*/
+    /*background-color: #fff;*/
+    /*padding: 15px;*/
+    box-shadow:1px 3px 10px rgba(0, 0, 0, 0.34);
+    opacity: .6;
+}
+
+#ranking:hover{
+    opacity: 1;
+}
