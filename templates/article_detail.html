@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 
 {% block page-main %}
+<style>
+    *{margin:0;padding:0;}
+</style>
 
     <div class="article-detail">
         <h1>{{ article.title }}</h1>
@@ -81,13 +84,16 @@
                         var pid=comment.parent_comment_id;
                         $("[self_id="+pid+"]").append(s);
                         $('[fpk = "'+comment.pk+'"]').append("<span style='font-size: 1.2em'>&nbsp;<span style='color: gray;'>回復</span>&nbsp;"+comment.parent_comment__user__username+"</span>");
+                        // $("[self_id="+comment.pk+"]").css('background-color', '#fcd95e');
                     }else if (comment.parent_comment_id && comment.friend_comment_id) {
                         var pid=comment.parent_comment_id;
                         $("[self_id="+pid+"]").append(s);
                         $('[fpk = "'+comment.pk+'"]').append("<span style='font-size: 1.2em'>&nbsp;<span style='color: gray;'>回復</span>&nbsp;"+comment.friend_comment__user__username+"</span>");
+                        // $("[self_id="+comment.pk+"]").css('background-color', '#fcd95e');
                     }else {
                         //  根評論
                         $("div#main_li").append(s);
+                        // $("[self_id="+comment.pk+"]").css('background-color', '#ffe179');
                     };
 
 
@@ -105,7 +111,7 @@
                $(this).html('<i class="fa fa-share" aria-hidden="true"></i>&nbsp;取消回復');
                // var pid = $(this).attr("pid");
                // var fid = $(this).attr("fid");
-               $(this).parent().after('<div class="fff" style="margin:5px" ><div class="col-md-10"><input type="text" class="form-control" placeholder="寫下你的評論。。。" style="background-color: gainsboro; " ></div><button class="btn btn-primary comment_btn">發佈</button></div>');
+               $(this).parent().after('<div class="fff" style="margin:5px" ><div class="col-md-11"><input type="text" class="form-control" placeholder="寫下你的評論。。。" style="background-color: gainsboro; " ></div><button class="btn btn-primary comment_btn">發佈</button></div>');
             }else {
                 $(this).html('<i class="fa fa-reply aria-hidden="true"></i>&nbsp;回復');
                 $(this).parent().siblings('div.fff').remove();
