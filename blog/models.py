@@ -122,7 +122,7 @@ class ArticleDetail(models.Model):
 
 class Article2Tag(models.Model):
     """
-    文章和标签的多对多关系表
+    文章和標籤的多對多關係表
     """
     nid = models.AutoField(primary_key=True)
     article = models.ForeignKey(to="Article", to_field="nid")
@@ -162,6 +162,7 @@ class Comment(models.Model):
     content = models.CharField(max_length=255)  # 評論內容
     create_time = models.DateTimeField(auto_now_add=True)
     parent_comment = models.ForeignKey("self", null=True, blank=True)  # blank=True 在django admin裡面可以不填
+    friend_comment = models.ForeignKey("self", null=True, blank=True, related_name='friend')
 
     def __str__(self):
         return self.content

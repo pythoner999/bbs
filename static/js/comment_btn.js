@@ -5,8 +5,17 @@
             var article_id = $(".info").attr("article_id");
             var $input_tag = $start.prev().find('input');
             var content = $input_tag.val();
-            var pid = $start.attr("pid");
-            console.log(pid);
+            if ($start.parent().parent().parent().hasClass('list-group-item')){
+                var pid = $start.parent().parent().parent().attr('self_id');
+                var fid = $start.parent().parent().attr('self_id');
+            }else if($start.parent().parent().parent().attr('id')=== 'main_li'){
+                var pid = $start.parent().parent().attr('self_id');
+                var fid = '';
+            }else{
+                var pid = '';
+                var fid = '';
+            };
+
             $.ajax({
                 url: "/blog/comment/",
                 type: "post",
@@ -14,6 +23,7 @@
                     article_id: article_id,
                     content: content,
                     pid: pid,
+                    fid: fid,
                     csrfmiddlewaretoken: $("[name='csrfmiddlewaretoken']").val(),
                 },
                 success: function (data) {
@@ -23,12 +33,15 @@
                     var username = data.username;
                     var avatar = data.avatar;
                     var pid = data.pid;
+                    var fid = data.fid;
 
                     // var comment_li = '<li class="list-group-item"><div><span style="color: gray">' + create_time + '</span> &nbsp;&nbsp; <a href=""><span>' + username + '</span></a></div> <div class="con"> <p> ' + content + ' </p> </div> </li>';
                     var comment_li = '<li class="list-group-item well"><div><a href="#"><img class="" src="/media/' +avatar+ '"style="width: 30px; height: 30px"></a><a><span style="font-size: 1.2em">&nbsp;&nbsp;'+ username +'</span></a><span class="pull-right" style="color:gray;">' +create_time+ '</span></div><div class="con"><p style="margin-left: 6%">' +content+ '</p></div></li>';
 
 
-                    if (pid){
+                    if (pid && fid){
+                        $start.parent().prev().after(comment_li);
+                    }else if(pid && !fid){
                         $start.parent().prev().after(comment_li);
                     }else {
                         $("#main_li").append(comment_li);

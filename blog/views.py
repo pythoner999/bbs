@@ -235,26 +235,33 @@ def up_down(request):
 
 def comment(request):
     pid = request.POST.get("pid")
+    fid = request.POST.get("fid")
     article_id = request.POST.get("article_id")
     content = request.POST.get("content")
     user_pk = request.user.pk
     response = {}
-    if not pid:  # 根評論
-        comment_obj = models.Comment.objects.create(article_id=article_id, user_id=user_pk, content=content)
-    else:
-        comment_obj = models.Comment.objects.create(article_id=article_id, user_id=user_pk, content=content, parent_comment_id=pid)
+    # if not pid:  # 根評論
+    #     comment_obj = models.Comment.objects.create(article_id=article_id, user_id=user_pk, content=content)
+    # else:
+    comment_obj = models.Comment.objects.create(article_id=article_id, user_id=user_pk, content=content, parent_comment_id=pid, friend_comment_id=fid)
     models.Article.objects.filter(pk=article_id).update(comment_count=F("comment_count") + 1)
-    response["create_time"] = comment_obj.create_time.strftime("%Y-%m-%d")
+    response["create_time"] = comment_obj.create_time.strftime("%H:%M:%S")
     response["content"] = comment_obj.content
     response["username"] = comment_obj.user.username
     response["avatar"] = comment_obj.user.avatar.name
     response["pid"] = comment_obj.parent_comment_id
+    response["fid"] = comment_obj.friend_comment_id
     return JsonResponse(response)
 
 
 def comment_tree(request, article_id):
-    ret = list(models.Comment.objects.filter(article_id=article_id).values("pk", "content", "parent_comment_id"))
-    return JsonResponse(ret, safe=False)
+    username = request.user.username
+    comment_list = list(models.Comment.objects.filter(article_id=article_id).extra(
+        select={"c": "date_format(blog_comment.create_time,'%%Y-%%m-%%d %%H:%%i:%%s')"}
+    ).values("pk", "content", "parent_comment_id", "friend_comment_id", "user__avatar","user__username","c", "parent_comment__user__username", "friend_comment__user__username"))
+
+    ret = {"username": username, "comment_list": comment_list}
+    return JsonResponse(ret)
 
 
 def add_article(request):

@@ -29,41 +29,8 @@
     <!--<p>評論列表</p>-->
 
     <ul class="comment_list" >
-    <div id="main_li">
-        {% for comment in comment_list %}
-            <li class="list-group-item">
-                <div id="first-row" fpk="{{ comment.pk }}" >
-                    <a href="#">
-                        <img class="" src="/media/{{ comment.user.avatar.name }}"  style="width: 30px; height: 30px">
-                    </a>
-                    <a><span style="font-size: 1.2em">&nbsp;&nbsp;{{ comment.user.username }}</span></a>
-                    <span class="pull-right" style="color:gray;">{{ comment.create_time|date:"Y-m-d H:i" }}</span>
-                </div>
-                {% if comment.parent_comment_id %}
-                    <div class="con">
-                        <p style="margin-left: 6%">
-                            {{ comment.content }}
-                        </p>
-                    </div>
-                    <script>
-                        $('[fpk = "{{comment.pk}}"]').append("<span style='font-size: 1.2em'>&nbsp;<span style='color: gray;'>回復</span>&nbsp;{{ comment.parent_comment.user.username}}</span>")
-                    </script>
-                {% else %}
-                    <div class="con">
-                        <p style="margin-left: 6%">
-                            {{ comment.content }}
-                        </p>
-                    </div>
-                {% endif %}
-                <div>
-                    {% if request.user.username %}
-                        <button class="xxxx" type="button" pid="{{comment.pk}}"><i class="fa fa-reply" aria-hidden="true"></i>&nbsp;回復</button>
-                    {% else %}
-                        <a class = "unlogin" href="/login/">評論前，請先按此登入</a>
-                    {% endif %}
-                </div>
-            </li>
-        {% endfor %}
+    <div id="main_li" >
+
     </div>
         <li class="list-group-item">
             {% if request.user.username %}
@@ -72,7 +39,7 @@
                         <input type="text" name=""  class="form-control" placeholder="寫下你的評論。。。"
                                style="background-color: gainsboro;" >
                     </div>
-                    <button class="btn btn-primary comment_btn" pid="">發佈</button>
+                    <button class="btn btn-primary comment_btn" pid="" fid="">發佈</button>
                 </div>
 
             {% else %}
@@ -90,34 +57,55 @@
 
     <script>
         // 獲取評論數據，展示評論樹結構
-        // $.ajax({
-        //     url: "/blog/comment_tree/" + '{{ article.pk }}/',
-        //     success: function (data) {
-        //         console.log(data);
-        //
-        //         $.each(data, function (index, comment_dict) {
-        //             var s = '<div class="comment_item" comment_id=' + comment_dict.pk + '> <span class="content">' + comment_dict.content + '</span> </div>'
-        //             if (comment_dict.parent_comment_id) {
-        //                 // 子評論
-        //                 var pid=comment_dict.parent_comment_id;
-        //                 $("[comment_id="+pid+"]").append(s);
-        //             }
-        //             else {   //  根評論
-        //                 $(".comment_tree").append(s);
-        //             }
-        //         })
-        //
-        //     }
-        // });
+        $.ajax({
+            url: "/blog/comment_tree/" + '{{ article.pk }}/',
+            success: function (data) {
+                console.log(data);
+
+                if (data.username){
+                        var b = '<div><button class="xxxx" type="button" pid="{{comment.pk}}" ><i class="fa fa-reply" aria-hidden="true"></i>&nbsp;回復</button></div>';
+                    } else {
+                        var b = '<div><a class = "unlogin" href="/login/">評論前，請先按此登入</a></div>';
+                    };
+
+                $.each(data.comment_list, function (index, comment) {
+                    var s = '<li class="list-group-item" self_id="'+comment.pk+'"><div id="first-row" fpk="'+comment.pk+'" ><a href="#"><img class="" src="/media/'+comment.user__avatar+
+                                '"style="width: 30px; height: 30px"></a><a><span style="font-size: 1.2em">&nbsp;&nbsp;'+comment.user__username+'</span></a><span class="pull-right" style="color:gray;">'+comment.c+'</span></div>'+
+                                '<div class="con"><p style="margin-left: 6%">'+comment.content+'</p></div>';
+
+                    s=s.concat(b);
+
+
+                    if (comment.parent_comment_id && !comment.friend_comment_id) {
+                        // 子評論
+                        var pid=comment.parent_comment_id;
+                        $("[self_id="+pid+"]").append(s);
+                        $('[fpk = "'+comment.pk+'"]').append("<span style='font-size: 1.2em'>&nbsp;<span style='color: gray;'>回復</span>&nbsp;"+comment.parent_comment__user__username+"</span>");
+                    }else if (comment.parent_comment_id && comment.friend_comment_id) {
+                        var pid=comment.parent_comment_id;
+                        $("[self_id="+pid+"]").append(s);
+                        $('[fpk = "'+comment.pk+'"]').append("<span style='font-size: 1.2em'>&nbsp;<span style='color: gray;'>回復</span>&nbsp;"+comment.friend_comment__user__username+"</span>");
+                    }else {
+                        //  根評論
+                        $("div#main_li").append(s);
+                    };
+
+
+
+                })
+
+            }
+        });
 
 
 
 
-        $(".xxxx").click(function () {
+        $("body").on('click',".xxxx",function () {
             if ($(this).find("i").hasClass('fa-reply')){
                $(this).html('<i class="fa fa-share" aria-hidden="true"></i>&nbsp;取消回復');
-               var pid = $(this).attr("pid");
-               $(this).parent().parent().append('<div style="margin-top: 5px" class="fff"><div class="col-sm-11" ><input type="text" name=""  class="form-control" placeholder="寫下你的評論。。。" style="background-color: gainsboro; " ></div><button class="btn btn-primary comment_btn" pid="' +pid+ '">發佈</button></div>');
+               // var pid = $(this).attr("pid");
+               // var fid = $(this).attr("fid");
+               $(this).parent().after('<div class="fff" style="margin:5px" ><div class="col-md-10"><input type="text" class="form-control" placeholder="寫下你的評論。。。" style="background-color: gainsboro; " ></div><button class="btn btn-primary comment_btn">發佈</button></div>');
             }else {
                 $(this).html('<i class="fa fa-reply aria-hidden="true"></i>&nbsp;回復');
                 $(this).parent().siblings('div.fff').remove();
@@ -176,6 +164,12 @@
     <script src="/static/js/article_detail.js"></script>
 
 {% endblock %}
+
+
+
+
+
+
 
 
 
