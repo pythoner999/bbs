@@ -80,7 +80,7 @@ class Article(models.Model):
     文章
     """
     nid = models.AutoField(primary_key=True)
-    title = models.CharField(max_length=50, verbose_name="文章標題")
+    title = models.CharField(max_length=255, verbose_name="文章標題")
     desc = models.CharField(max_length=255)  # 文章描述
     create_time = models.DateTimeField(auto_now_add=True)  # 創建時間 --> datetime()
 
@@ -90,6 +90,8 @@ class Article(models.Model):
     up_count = models.IntegerField(verbose_name="點讚數", default=0)
     # 踩
     down_count = models.IntegerField(verbose_name="踩數", default=0)
+    # 觀看次數
+    view_count = models.IntegerField(verbose_name="觀看數", default=0)
 
     category = models.ForeignKey(to="Category", to_field="nid")
     user = models.ForeignKey(to="UserInfo", to_field="nid")
@@ -104,6 +106,20 @@ class Article(models.Model):
 
     class Meta:
         verbose_name = "文章"
+        verbose_name_plural = verbose_name
+
+
+class ViewArticle(models.Model):
+    """
+    用戶觀看紀錄
+    """
+    nid = models.AutoField(primary_key=True)
+    user = models.ForeignKey(to="UserInfo", to_field="nid")
+    article = models.ForeignKey(to="Article", to_field="nid")
+
+    class Meta:
+        unique_together = (("user", "article"),)
+        verbose_name = "用戶觀看紀錄"
         verbose_name_plural = verbose_name
 
 
@@ -170,3 +186,5 @@ class Comment(models.Model):
     class Meta:
         verbose_name = "評論"
         verbose_name_plural = verbose_name
+
+

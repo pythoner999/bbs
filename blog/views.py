@@ -11,6 +11,7 @@ import logging
 import json
 import os
 import re
+from blog.utils import tools
 
 # 生成一個logger實例，專門用來記錄日誌
 logger = logging.getLogger(__name__)
@@ -70,7 +71,13 @@ def logout(request):
 def index(request):
     # 查詢所有的文章列表
     article_list = models.Article.objects.all()
-    return render(request, "index.html", {"article_list": article_list})
+    up_count_rank = list(models.Article.objects.order_by("-up_count")[:3].values("title", "nid", "user__username"))
+    tools.choose_chinese_character(up_count_rank)
+    comment_count_rank = list(models.Article.objects.order_by("-comment_count")[:3].values("title", "nid", "user__username"))
+    tools.choose_chinese_character(comment_count_rank)
+    view_count_rank = list(models.Article.objects.order_by("-view_count")[:3].values("title", "nid", "user__username"))
+    tools.choose_chinese_character(view_count_rank)
+    return render(request, "index.html", {"article_list": article_list, "up_count_rank": up_count_rank, "comment_count_rank": comment_count_rank, "view_count_rank": view_count_rank})
 
 
 pc_geetest_id = "b46d1900d0a894591916ea94ea91bd2c"
@@ -204,6 +211,17 @@ def article_detail(request, username, pk):
     article_obj = models.Article.objects.filter(pk=pk).first()
     # 所有評論列表
     comment_list = models.Comment.objects.filter(article_id=pk)
+
+    # 建立觀看記錄
+    try:
+        models.ViewArticle.objects.create(user=user, article=article_obj)
+    except:
+        pass
+    else:
+        # 觀看次數加一
+        article_obj.view_count += 1
+        article_obj.save()
+
     return render(
         request,
         "article_detail.html",
@@ -298,16 +316,18 @@ def add_article(request):
                             try:
                                 tag_obj = models.Tag.objects.create(title=mini_tag, blog=blog)
                                 models.Article2Tag.objects.create(article=article_obj, tag=tag_obj)
-                            except:
+                            except Exception as e:
                                 tag_obj = models.Tag.objects.filter(title=mini_tag, blog=blog).first()
                                 models.Article2Tag.objects.create(article=article_obj, tag=tag_obj)
+
                 else:
                     try:
                         tag_obj = models.Tag.objects.create(title=tag, blog=blog)
                         models.Article2Tag.objects.create(article=article_obj, tag=tag_obj)
-                    except:
+                    except Exception as e:
                         tag_obj = models.Tag.objects.filter(title=tag, blog=blog).first()
                         models.Article2Tag.objects.create(article=article_obj, tag=tag_obj)
+
         # except Exception as e:
         #     ret["status"] = 1
         #     ret["msg"] = "添加失敗！"
@@ -365,5 +385,8 @@ def style(request):
         color_demo['content'] = result.group('content')
         color_demo['title'] = result.group('title')
     return render(request, "style.html", color_demo)
+
+
+
 
 

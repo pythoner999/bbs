@@ -20,7 +20,7 @@
                                 <h4 class="panel-title">
                                     <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
                                        aria-expanded="false"  aria-controls="collapseOne">
-                                        <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;觀看人次
+                                        <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>&nbsp; 點讚人次
                                     </a>
                                 </h4>
                             </div>
@@ -29,9 +29,9 @@
                                 <div class="panel-body" >
                                     <!--<span style="display:inline-block;">1.抖音10大網紅排名:你認識幾個？</span>2.男人夢想神位3.TikTok-->
                                     <ol>
-                                        <li>抖音10大網紅排名:你認識幾個？</li>
-                                        <li>男人夢想神位</li>
-                                        <li>TikTok</li>
+                                        {% for each in up_count_rank %}
+                                            <li><a href="/blog/{{each.user__username}}/article/{{each.nid}}/">{{each.title}}</a></li>
+                                        {% endfor %}
                                     </ol>
                                 </div>
                             </div>
@@ -41,14 +41,19 @@
                                 <h4 class="panel-title">
                                     <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
                                        href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                        <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>&nbsp; 點讚人次
+                                        <i class="fa fa-comments" aria-hidden="true"></i>&nbsp; 評論次數
+
                                     </a>
                                 </h4>
                             </div>
                             <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel"
                                  aria-labelledby="headingTwo">
                                 <div class="panel-body">
-                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
+                                    <ol>
+                                        {% for each in comment_count_rank %}
+                                            <li><a href="/blog/{{each.user__username}}/article/{{each.nid}}/">{{each.title}}</a></li>
+                                        {% endfor %}
+                                    </ol>
 
                                 </div>
                             </div>
@@ -58,15 +63,19 @@
                                 <h4 class="panel-title">
                                     <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
                                        href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                        <i class="fa fa-comments" aria-hidden="true"></i>&nbsp; 評論次數
+                                        <i class="fa fa-eye" aria-hidden="true"></i>&nbsp;觀看人次
+
                                     </a>
                                 </h4>
                             </div>
                             <div id="collapseThree" class="panel-collapse collapse" role="tabpanel"
                                  aria-labelledby="headingThree">
                                 <div class="panel-body">
-                                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry
-
+                                   <ol>
+                                        {% for each in view_count_rank %}
+                                            <li><a href="/blog/{{each.user__username}}/article/{{each.nid}}/">{{each.title}}</a></li>
+                                        {% endfor %}
+                                    </ol>
                                 </div>
                             </div>
                         </div>
