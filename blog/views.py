@@ -211,12 +211,12 @@ def article_detail(request, username, pk):
     article_obj = models.Article.objects.filter(pk=pk).first()
     # 所有評論列表
     comment_list = models.Comment.objects.filter(article_id=pk)
-
+    login_person = request.user
     # 建立觀看記錄
     try:
-        models.ViewArticle.objects.create(user=user, article=article_obj)
-    except:
-        pass
+        models.ViewArticle.objects.create(user=login_person, article=article_obj)
+    except Exception as e:
+        print(e)
     else:
         # 觀看次數加一
         article_obj.view_count += 1

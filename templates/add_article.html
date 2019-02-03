@@ -106,7 +106,8 @@
 
 
 
-            $("#category-select option").on("click", function () {
+            $("#category-select").on("click", function () {
+                // var selected_value = $(this).find('option:selected').val();
                 var selected_value = $(this).val();
                 $("#category").val(selected_value);
             });
