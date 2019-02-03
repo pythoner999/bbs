@@ -10,7 +10,7 @@
                 var fid = $start.parent().parent().attr('self_id');
             }else if($start.parent().parent().parent().attr('id')=== 'main_li'){
                 var pid = $start.parent().parent().attr('self_id');
-                var fid = '';
+                var fid = $start.parent().parent().attr('self_id');
             }else{
                 var pid = '';
                 var fid = '';
@@ -39,9 +39,11 @@
                     var comment_li = '<li class="list-group-item well"><div><a href="#"><img class="" src="/media/' +avatar+ '"style="width: 30px; height: 30px"></a><a><span style="font-size: 1.2em">&nbsp;&nbsp;'+ username +'</span></a><span class="pull-right" style="color:gray;">' +create_time+ '</span></div><div class="con"><p style="margin-left: 6%">' +content+ '</p></div></li>';
 
 
-                    if (pid && fid){
-                        $start.parent().prev().after(comment_li);
-                    }else if(pid && !fid){
+                    // if (pid && fid){
+                    //     $start.parent().prev().after(comment_li);
+                    // }else if(pid && !fid){
+                    //     $start.parent().prev().after(comment_li);
+                    if (pid){
                         $start.parent().prev().after(comment_li);
                     }else {
                         $("#main_li").append(comment_li);

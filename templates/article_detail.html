@@ -66,11 +66,14 @@
                 console.log(data);
 
                 if (data.username){
-                        var b = '<div><button class="xxxx" type="button" pid="{{comment.pk}}" ><i class="fa fa-reply" aria-hidden="true"></i>&nbsp;回復</button></div>';
+                        var b = '<div><button class="xxxx " id="xsxs" type="button" pid="{{comment.pk}}" ><i class="fa fa-reply" aria-hidden="true"></i>&nbsp;回復</button></div>';
                     } else {
                         var b = '<div><a class = "unlogin" href="/login/">評論前，請先按此登入</a></div>';
                     };
 
+                var reply_num = data.reply_num
+                console.log(reply_num)
+                // console.log(reply_num[1])
                 $.each(data.comment_list, function (index, comment) {
                     var s = '<li class="list-group-item" self_id="'+comment.pk+'"><div id="first-row" fpk="'+comment.pk+'" ><a href="#"><img class="" src="/media/'+comment.user__avatar+
                                 '"style="width: 30px; height: 30px"></a><a><span style="font-size: 1.2em">&nbsp;&nbsp;'+comment.user__username+'</span></a><span class="pull-right" style="color:gray;">'+comment.c+'</span></div>'+
@@ -79,16 +82,19 @@
                     s=s.concat(b);
 
 
-                    if (comment.parent_comment_id && !comment.friend_comment_id) {
+                    if (comment.parent_comment_id && comment.friend_comment_id) {
                         // 子評論
                         var pid=comment.parent_comment_id;
                         $("[self_id="+pid+"]").append(s);
-                        $('[fpk = "'+comment.pk+'"]').append("<span style='font-size: 1.2em'>&nbsp;<span style='color: gray;'>回復</span>&nbsp;"+comment.parent_comment__user__username+"</span>");
-                        // $("[self_id="+comment.pk+"]").css('background-color', '#fcd95e');
-                    }else if (comment.parent_comment_id && comment.friend_comment_id) {
-                        var pid=comment.parent_comment_id;
-                        $("[self_id="+pid+"]").append(s);
                         $('[fpk = "'+comment.pk+'"]').append("<span style='font-size: 1.2em'>&nbsp;<span style='color: gray;'>回復</span>&nbsp;"+comment.friend_comment__user__username+"</span>");
+                        if($("[self_id="+pid+"] li").length === 2){
+                            $("[self_id="+pid+"]").append('<li class="list-group-item" pid="'+pid+'"><button class="xxxx" id="all_comment" style="color: black;">查看全部&nbsp;'+reply_num[pid]+'&nbsp;條回覆</button></li>');
+                        };
+                        // $("[self_id="+comment.pk+"]").css('background-color', '#fcd95e');
+                    // }else if (comment.parent_comment_id && comment.friend_comment_id) {
+                    //     var pid=comment.parent_comment_id;
+                    //     $("[self_id="+pid+"]").append(s);
+                    //     $('[fpk = "'+comment.pk+'"]').append("<span style='font-size: 1.2em'>&nbsp;<span style='color: gray;'>回復</span>&nbsp;"+comment.friend_comment__user__username+"</span>");
                         // $("[self_id="+comment.pk+"]").css('background-color', '#fcd95e');
                     }else {
                         //  根評論
@@ -106,7 +112,7 @@
 
 
 
-        $("body").on('click',".xxxx",function () {
+        $("body").on('click',"#xsxs",function () {
             if ($(this).find("i").hasClass('fa-reply')){
                $(this).html('<i class="fa fa-share" aria-hidden="true"></i>&nbsp;取消回復');
                // var pid = $(this).attr("pid");
@@ -122,7 +128,12 @@
         });
 
 
-        // 回復按鈕事件
+        $("body").on('click',"#all_comment",function () {
+             $.ajax
+        });
+
+
+            // 回復按鈕事件
 
         $(".list-group-item .reply_btn").click(function () {
 

@@ -14733,3 +14733,16 @@ django.db.utils.OperationalError: (2003, "Can't connect to MySQL server on '192.
 [2019-02-03 14:37:58,903][Thread-37:20216][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
 [2019-02-03 14:44:23,366][Thread-57:9996][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
 [2019-02-03 16:25:56,406][Thread-18:15436][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-03 23:21:46,274][Thread-17:7536][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-04 00:25:32,485][Thread-1:29148][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/comment_tree/14/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 277, in comment_tree
+    comment_list = list(models.Comment.objects.filter(article_id=article_id, parent_comment_id=none, friend_comment_id=none).extra(
+NameError: name 'none' is not defined
+[2019-02-04 01:40:03,298][Thread-14:2848][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]

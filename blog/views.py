@@ -274,11 +274,18 @@ def comment(request):
 
 def comment_tree(request, article_id):
     username = request.user.username
-    comment_list = list(models.Comment.objects.filter(article_id=article_id).extra(
+    comment_list = list(models.Comment.objects.filter(article_id=article_id, parent_comment_id=None, friend_comment_id=None).order_by("nid").extra(
         select={"c": "date_format(blog_comment.create_time,'%%Y-%%m-%%d %%H:%%i:%%s')"}
     ).values("pk", "content", "parent_comment_id", "friend_comment_id", "user__avatar","user__username","c", "parent_comment__user__username", "friend_comment__user__username"))
+    reply_num={}
+    for each in comment_list[:]:
+        comment_list += list(models.Comment.objects.filter(parent_comment_id=each['pk']).order_by("nid").extra(
+            select={"c": "date_format(blog_comment.create_time,'%%Y-%%m-%%d %%H:%%i:%%s')"}
+        ).values("pk", "content", "parent_comment_id", "friend_comment_id", "user__avatar", "user__username", "c",
+                 "parent_comment__user__username", "friend_comment__user__username"))[:2]
+        reply_num[each['pk']] = models.Comment.objects.filter(parent_comment_id=each['pk']).count()
 
-    ret = {"username": username, "comment_list": comment_list}
+    ret = {"username": username, "comment_list": comment_list, "reply_num":reply_num}
     return JsonResponse(ret)
 
 
