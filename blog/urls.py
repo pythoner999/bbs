@@ -11,6 +11,7 @@ urlpatterns = [
     url(r"up_down/",views.up_down),
     url(r"comment/",views.comment),
     url(r"comment_tree/(\d+)/",views.comment_tree),
+    url(r"comment_modal/", views.comment_modal),
 
 
     # /blog/xiaohei/tag/python

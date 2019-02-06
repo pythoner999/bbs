@@ -8,7 +8,8 @@
             if ($start.parent().parent().parent().hasClass('list-group-item')){
                 var pid = $start.parent().parent().parent().attr('self_id');
                 var fid = $start.parent().parent().attr('self_id');
-            }else if($start.parent().parent().parent().attr('id')=== 'main_li'){
+            }else if($start.parent().parent().parent().attr('id')=== 'main_li' ||
+                $start.parent().parent().parent().attr('id')=== 'Second_li'){
                 var pid = $start.parent().parent().attr('self_id');
                 var fid = $start.parent().parent().attr('self_id');
             }else{
@@ -46,7 +47,8 @@
                     if (pid){
                         $start.parent().prev().after(comment_li);
                     }else {
-                        $("#main_li").append(comment_li);
+                        // $("#main_li").append(comment_li);
+                        $start.parent().parent().prev().append(comment_li);
                         window.scrollTo(0,document.body.scrollHeight);
                     };
 

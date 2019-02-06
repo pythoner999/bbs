@@ -53,6 +53,27 @@
 
     </ul>
 
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" >
+                    <div class="modal-dialog" role="document" >
+                        <div class="modal-content" >
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                              <h4 class="modal-title" id="exampleModalLabel"><strong>查看對話</strong></h4>
+                          </div >
+                            <ul class="comment_list" >
+                                <div id="Second_li" >
+
+                                </div>
+                            </ul>
+                          </div>
+                          <!--<div class="modal-footer">-->
+                            <!--<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>-->
+                            <!--<button type="button" class="btn btn-primary" id="multiple-add" data-dismiss="modal">添加</button>-->
+                          <!--</div>-->
+                        </div>
+                      </div>
+                    </div>
+
 
 
 
@@ -85,10 +106,12 @@
                     if (comment.parent_comment_id && comment.friend_comment_id) {
                         // 子評論
                         var pid=comment.parent_comment_id;
-                        $("[self_id="+pid+"]").append(s);
-                        $('[fpk = "'+comment.pk+'"]').append("<span style='font-size: 1.2em'>&nbsp;<span style='color: gray;'>回復</span>&nbsp;"+comment.friend_comment__user__username+"</span>");
-                        if($("[self_id="+pid+"] li").length === 2){
-                            $("[self_id="+pid+"]").append('<li class="list-group-item" pid="'+pid+'"><button class="xxxx" id="all_comment" style="color: black;">查看全部&nbsp;'+reply_num[pid]+'&nbsp;條回覆</button></li>');
+                        if($("[self_id="+pid+"] li").length < 2){
+                            $("[self_id="+pid+"]").append(s);
+                            $('[fpk = "'+comment.pk+'"]').append("<span style='font-size: 1.2em'>&nbsp;<span style='color: gray;'>回復</span>&nbsp;"+comment.friend_comment__user__username+"</span>");
+                            if($("[self_id="+pid+"] li").length === 2){
+                                $("[self_id="+pid+"]").append('<li class="list-group-item" pid="'+pid+'"><button class="xxxx all_comment" style="color: black;">查看全部&nbsp;'+reply_num[pid]+'&nbsp;條回覆</button></li>');
+                            };
                         };
                         // $("[self_id="+comment.pk+"]").css('background-color', '#fcd95e');
                     // }else if (comment.parent_comment_id && comment.friend_comment_id) {
@@ -117,7 +140,7 @@
                $(this).html('<i class="fa fa-share" aria-hidden="true"></i>&nbsp;取消回復');
                // var pid = $(this).attr("pid");
                // var fid = $(this).attr("fid");
-               $(this).parent().after('<div class="fff" style="margin:5px" ><div class="col-md-11"><input type="text" class="form-control" placeholder="寫下你的評論。。。" style="background-color: gainsboro; " ></div><button class="btn btn-primary comment_btn">發佈</button></div>');
+               $(this).parent().after('<div class="fff" style="margin:5px" ><div class="col-md-10"><input type="text" class="form-control" placeholder="寫下你的評論。。。" style="background-color: gainsboro; " ></div><button class="btn btn-primary comment_btn">發佈</button></div>');
             }else {
                 $(this).html('<i class="fa fa-reply aria-hidden="true"></i>&nbsp;回復');
                 $(this).parent().siblings('div.fff').remove();
@@ -128,8 +151,56 @@
         });
 
 
-        $("body").on('click',"#all_comment",function () {
-             $.ajax
+
+
+
+        $("body").on('click',".all_comment",function () {
+
+            var $this = $(this);
+
+            $.ajax({
+                    url: "/blog/comment_modal/",
+                    type: "get",
+                    // traditional : true,
+                    data: {
+                        pid:$this.parent().attr("pid"),
+                    },
+                    success: function (data) {
+                        if (data.username){
+                            var b = '<div><button class="xxxx " id="xsxs" type="button" pid="{{comment.pk}}" ><i class="fa fa-reply" aria-hidden="true"></i>&nbsp;回復</button></div>';
+                        } else {
+                            var b = '<div><a class = "unlogin" href="/login/">評論前，請先按此登入</a></div>';
+                        };
+                        console.log(data);
+                        $.each(data.comment, function (index, comment) {
+                            var s = '<li class="list-group-item" id_self="'+comment.pk+'" self_id="'+comment.pk+'"><div id="first-row" kpf="'+comment.pk+'" ><a href="#"><img class="" src="/media/'+comment.user__avatar+
+                                '"style="width: 30px; height: 30px"></a><a><span style="font-size: 1.2em">&nbsp;&nbsp;'+comment.user__username+'</span></a><span class="pull-right" style="color:gray;">'+comment.c+'</span></div>'+
+                                '<div class="con"><p style="margin-left: 6%">'+comment.content+'</p></div>';
+                            s=s.concat(b);
+                            if(!comment.parent_comment_id){
+                                $("div#Second_li").append(s);
+                            }else {
+                                var pid=comment.parent_comment_id;
+                                $("[id_self="+pid+"]").append(s);
+                                $('[kpf= "'+comment.pk+'"]').append("<span style='font-size: 1.2em'>&nbsp;<span style='color: gray;'>回復</span>&nbsp;"+comment.friend_comment__user__username+"</span>");
+
+                            };
+
+
+                        })
+
+                        // document.onload = function(){$('#exampleModal').modal('show');};
+                        $('#exampleModal').modal('show');
+
+
+                    }
+            });
+
+        });
+
+
+        $("body").on('hide.bs.modal',"#exampleModal",function () {
+            $("#Second_li").html("");
         });
 
 
@@ -181,6 +252,8 @@
     <script src="/static/js/article_detail.js"></script>
 
 {% endblock %}
+
+
 
 
 
