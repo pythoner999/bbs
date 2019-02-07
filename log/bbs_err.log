@@ -14676,3 +14676,25 @@ Traceback (most recent call last):
   File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 306, in comment_modal
     ret = {"parent_comment": parent_comment, "comment": child_comment + username}
 TypeError: can only concatenate list (not "str") to list
+[2019-02-07 15:28:02,161][Thread-5:21660][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/media_order/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 425, in media_order
+    ret = {status: 0, msg:""}
+NameError: name 'status' is not defined
+[2019-02-07 15:28:05,182][Thread-6:15888][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/media_order/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 425, in media_order
+    ret = {status: 0, msg:""}
+NameError: name 'status' is not defined

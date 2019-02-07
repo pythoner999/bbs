@@ -70,7 +70,7 @@ def logout(request):
 
 def index(request):
     # 查詢所有的文章列表
-    article_list = models.Article.objects.all()
+    article_list = models.Article.objects.all().order_by("-nid")
     up_count_rank = list(models.Article.objects.order_by("-up_count")[:3].values("title", "nid", "user__username"))
     tools.choose_chinese_character(up_count_rank)
     comment_count_rank = list(models.Article.objects.order_by("-comment_count")[:3].values("title", "nid", "user__username"))
@@ -411,6 +411,30 @@ def style(request):
         color_demo['content'] = result.group('content')
         color_demo['title'] = result.group('title')
     return render(request, "style.html", color_demo)
+
+
+def media_order(request):
+    chosen = request.GET.get("chosen");
+    if chosen == "按發佈時間":
+        order = "-create_time"
+    elif chosen == "按點讚人次":
+        order = "-up_count"
+    elif chosen == "按評論次數":
+        order = "-comment_count"
+    else:
+        order = "-view_count"
+
+    ret = {"status": 0, "msg":""}
+    try:
+        article_list = list(models.Article.objects.all().order_by(order).extra(
+            select={"c": "date_format(blog_article.create_time,'%%Y-%%m-%%d %%H:%%i:%%s')"}
+        ).values("pk", "title", "desc", "c", "comment_count", "up_count", "c","user__username","user__avatar","view_count"))
+
+        ret["msg"] = article_list
+    except Exception as e:
+        ret["status"] = 1
+        ret["msg"] = str(e)
+    return JsonResponse(ret)
 
 
 

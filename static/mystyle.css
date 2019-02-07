@@ -75,6 +75,18 @@
    /*border-width: 1.5px;*/
 /*}*/
 
+.Card {
+
+    margin-bottom: 10px;
+    background: #FFFFFF;
+    overflow: hidden;
+    border-radius: 6px;
+    /*box-shadow: 0 1px 3px rgba(26, 26, 26, 0.1);*/
+    box-shadow:1px 3px 10px rgba(0, 0, 0, 0.34);
+    box-sizing: border-box;
+
+}
+
 
 /*個人主頁*/
 .header {
@@ -230,14 +242,10 @@ select {
     width: 100%;
     /*border: 1px solid black;*/
     border-radius: 5%;
-    /*background: white;*/
-    /*left: 50%;*/
+
     right: 30%;
     position: absolute;
-    /*top: 28%;*/
-    /*transform: translate(-66%);*/
-    /*background-color: #fff;*/
-    /*padding: 15px;*/
+
     box-shadow:1px 3px 10px rgba(0, 0, 0, 0.34);
     opacity: .6;
 }

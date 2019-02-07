@@ -15072,3 +15072,73 @@ TypeError: can only concatenate list (not "str") to list
 [2019-02-07 00:20:11,539][Thread-70:27176][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
 [2019-02-07 01:55:30,031][Thread-81:21840][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
 [2019-02-07 02:10:22,647][Thread-113:12448][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-07 12:28:15,803][Thread-13:26340][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-07 15:19:44,951][Thread-12:16172][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-07 15:28:02,161][Thread-5:21660][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/media_order/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 425, in media_order
+    ret = {status: 0, msg:""}
+NameError: name 'status' is not defined
+[2019-02-07 15:28:05,182][Thread-6:15888][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/media_order/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 425, in media_order
+    ret = {status: 0, msg:""}
+NameError: name 'status' is not defined
+[2019-02-07 19:10:18,625][Thread-24:17212][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-07 19:37:32,113][Thread-413:9312][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-07 19:39:17,049][Thread-424:13772][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-07 19:41:34,249][Thread-450:544][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-07 19:45:49,848][Thread-482:21948][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-07 19:46:22,741][Thread-503:20196][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-07 19:46:34,624][Thread-515:19208][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-07 19:46:45,732][Thread-527:14372][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-07 19:50:42,713][Thread-568:19728][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-07 19:52:28,794][Thread-614:29116][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-07 19:52:41,481][Thread-626:30624][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-07 19:54:09,620][Thread-697:20596][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-07 19:55:37,723][Thread-710:25076][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-07 19:55:57,831][Thread-722:11084][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-07 20:05:47,961][Thread-12:10956][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-07 20:07:29,034][Thread-59:15008][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-07 20:08:47,930][Thread-72:6100][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-07 20:15:51,706][Thread-81:27600][task_id:django.request][base.py:152][WARNING][Not Found: /...]
+[2019-02-07 20:16:03,644][Thread-90:22408][task_id:django.request][base.py:152][WARNING][Not Found: /...]
+[2019-02-07 20:16:04,227][Thread-91:10908][task_id:django.request][base.py:152][WARNING][Not Found: /...]
+[2019-02-07 20:17:49,933][Thread-101:27572][task_id:django.request][base.py:152][WARNING][Not Found: /...]
+[2019-02-07 20:24:40,319][Thread-120:11488][task_id:django.request][base.py:152][WARNING][Not Found: /...]
+[2019-02-07 20:24:40,832][Thread-125:19860][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-07 20:24:55,601][Thread-132:19436][task_id:django.request][base.py:152][WARNING][Not Found: /...]
+[2019-02-07 20:24:55,786][Thread-133:25064][task_id:django.request][base.py:152][WARNING][Not Found: /...]
+[2019-02-07 20:25:24,572][Thread-145:11932][task_id:django.request][base.py:152][WARNING][Not Found: /...]
+[2019-02-07 20:25:25,344][Thread-150:23752][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-07 20:25:36,360][Thread-158:13012][task_id:django.request][base.py:152][WARNING][Not Found: /...]
+[2019-02-07 20:26:06,789][Thread-170:19092][task_id:django.request][base.py:152][WARNING][Not Found: /...]
+[2019-02-07 20:26:18,854][Thread-181:19016][task_id:django.request][base.py:152][WARNING][Not Found: /...]
+[2019-02-07 20:26:19,278][Thread-186:936][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-07 20:26:32,196][Thread-193:14800][task_id:django.request][base.py:152][WARNING][Not Found: /...]
+[2019-02-07 20:26:32,560][Thread-198:15104][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-07 20:26:55,524][Thread-205:12520][task_id:django.request][base.py:152][WARNING][Not Found: /...]
+[2019-02-07 20:26:55,707][Thread-206:11964][task_id:django.request][base.py:152][WARNING][Not Found: /...]
+[2019-02-07 20:27:45,694][Thread-218:28468][task_id:django.request][base.py:152][WARNING][Not Found: /...]
+[2019-02-07 20:27:45,921][Thread-219:26956][task_id:django.request][base.py:152][WARNING][Not Found: /...]
+[2019-02-07 20:28:21,425][Thread-232:11656][task_id:django.request][base.py:152][WARNING][Not Found: /...]
+[2019-02-07 20:28:22,019][Thread-237:10200][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-07 20:28:56,024][Thread-246:10300][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-07 20:30:10,337][Thread-259:29840][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-07 20:34:47,521][Thread-336:23976][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-07 20:36:45,142][Thread-348:21320][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-07 20:40:25,309][Thread-390:13812][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-07 20:48:18,380][Thread-428:14112][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-07 20:48:33,011][Thread-435:15428][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
