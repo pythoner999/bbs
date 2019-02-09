@@ -3,6 +3,21 @@
 {% block page-main %}
 <style>
     *{margin:0;padding:0;}
+    .page button{
+
+        border-width: 0px;
+        background-color: white;
+        margin: 8px 12px;
+        /*margin-left: 12px;*/
+        /*margin-right: 12px;*/
+    }
+    .page button:hover{
+        color: #2e6da4;
+    }
+    .page button:disabled {
+        cursor: default;
+        opacity: 0.5;
+    }
 
 </style>
 
@@ -84,6 +99,7 @@
         // 獲取評論數據，展示評論樹結構
         $.ajax({
             url: "/blog/comment_tree/" + '{{ article.pk }}/',
+            data:{page_num:'1'},
             success: function (data) {
                 console.log(data);
 
@@ -128,9 +144,12 @@
 
 
 
-                })
+                });
 
-            }
+                var page_html = '<li class="list-group-item page"><div style="text-align: center">'+data.page_html+'</div></li>';
+                $("div#main_li").append(page_html);
+
+            },
         });
 
 
@@ -202,6 +221,63 @@
 
         $("body").on('hide.bs.modal',"#exampleModal",function () {
             $("#Second_li").html("");
+        });
+
+
+        $("body").on("click","li.page button",function () {
+            if (!this.hasAttribute("disabled")){
+                var page_num = $(this).text();
+                if(page_num == "上一頁"||page_num == "下一頁"){
+                    page_num = $(this).attr("value");
+                };
+                $("#main_li").html("");
+
+            };
+            $.ajax({
+            url: "/blog/comment_tree/" + '{{ article.pk }}/',
+            data:{page_num:page_num},
+            success: function (data) {
+                console.log(data);
+
+                if (data.username){
+                        var b = '<div><button class="xxxx " id="xsxs" type="button" pid="{{comment.pk}}" ><i class="fa fa-reply" aria-hidden="true"></i>&nbsp;回復</button></div>';
+                    } else {
+                        var b = '<div><a class = "unlogin" href="/login/">評論前，請先按此登入</a></div>';
+                    };
+
+                var reply_num = data.reply_num
+                console.log(reply_num)
+                // console.log(reply_num[1])
+                $.each(data.comment_list, function (index, comment) {
+                    var s = '<li class="list-group-item" self_id="'+comment.pk+'"><div id="first-row" fpk="'+comment.pk+'" ><a href="#"><img class="" src="/media/'+comment.user__avatar+
+                                '"style="width: 30px; height: 30px"></a><a><span style="font-size: 1.2em">&nbsp;&nbsp;'+comment.user__username+'</span></a><span class="pull-right" style="color:gray;">'+comment.c+'</span></div>'+
+                                '<div class="con"><p style="margin-left: 6%">'+comment.content+'</p></div>';
+
+                    s=s.concat(b);
+
+
+                    if (comment.parent_comment_id && comment.friend_comment_id) {
+                        // 子評論
+                        var pid=comment.parent_comment_id;
+                        if($("[self_id="+pid+"] li").length < 2){
+                            $("[self_id="+pid+"]").append(s);
+                            $('[fpk = "'+comment.pk+'"]').append("<span style='font-size: 1.2em'>&nbsp;<span style='color: gray;'>回復</span>&nbsp;"+comment.friend_comment__user__username+"</span>");
+                            if($("[self_id="+pid+"] li").length === 2){
+                                $("[self_id="+pid+"]").append('<li class="list-group-item" pid="'+pid+'"><button class="xxxx all_comment" style="color: black;">查看全部&nbsp;'+reply_num[pid]+'&nbsp;條回覆</button></li>');
+                            };
+                        };
+                    }else {
+                        //  根評論
+                        $("div#main_li").append(s);
+                        // $("[self_id="+comment.pk+"]").css('background-color', '#ffe179');
+                    };
+                });
+
+                var page_html = '<li class="list-group-item page"><div style="text-align: center">'+data.page_html+'</div></li>';
+                $("div#main_li").append(page_html);
+
+            },
+            });
         });
 
 

@@ -15142,3 +15142,53 @@ NameError: name 'status' is not defined
 [2019-02-07 20:40:25,309][Thread-390:13812][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
 [2019-02-07 20:48:18,380][Thread-428:14112][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
 [2019-02-07 20:48:33,011][Thread-435:15428][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-08 12:54:32,750][Thread-11:17952][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-08 13:08:54,835][Thread-77:16144][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-08 22:37:01,262][Thread-15:21660][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/comment_tree/14/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 282, in comment_tree
+    comment_total = comment_list.count()
+TypeError: count() takes exactly one argument (0 given)
+[2019-02-08 23:28:58,035][Thread-39:13484][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-08 23:40:47,579][Thread-161:17460][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-08 23:46:47,133][Thread-227:24040][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-08 23:48:08,060][Thread-260:17140][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-08 23:48:23,021][Thread-273:9584][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-08 23:49:07,819][Thread-304:5136][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-08 23:49:53,415][Thread-320:26012][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-08 23:50:11,113][Thread-339:18488][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-08 23:50:26,958][Thread-355:15968][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-08 23:54:03,904][Thread-432:19088][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-08 23:55:05,052][Thread-445:28736][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-08 23:57:08,675][Thread-524:18788][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-08 23:57:22,489][Thread-537:9952][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-09 11:50:35,231][Thread-11:8124][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-09 12:37:36,952][Thread-73:12472][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-09 13:00:32,803][Thread-319:21696][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-09 13:07:16,111][Thread-407:10160][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-09 13:21:18,180][Thread-438:24172][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-09 13:30:12,615][Thread-502:18692][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/comment_tree/14/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 286, in comment_tree
+    page_html = page.page_html()
+  File "C:\Users\Willie\Desktop\bbs\blog\utils\tools.py", line 87, in page_html
+    html_str_list.append('<button>'+self.total_page+'</button>')
+TypeError: must be str, not int
+[2019-02-09 13:43:26,155][Thread-63:16596][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-09 14:41:36,855][Thread-162:24484][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-09 15:55:00,345][Thread-269:22032][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-09 19:06:37,474][Thread-214:29324][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-09 19:13:00,648][Thread-259:4140][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]
+[2019-02-09 19:13:12,025][Thread-265:13812][task_id:django.request][base.py:152][WARNING][Not Found: /favicon.ico]

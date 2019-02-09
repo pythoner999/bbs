@@ -279,6 +279,13 @@ def comment_tree(request, article_id):
     ).values("pk", "content", "parent_comment_id", "friend_comment_id",
     "user__avatar", "user__username", "c", "parent_comment__user__username", "friend_comment__user__username"))
 
+    comment_total = len(comment_list)
+    page_num = request.GET.get("page_num")
+    page = tools.Page(page_num=page_num,total_count=comment_total,per_page=3,max_page=3)
+    comment_list = comment_list[page.start:page.end]
+    page_html = page.page_html()
+
+
     reply_num={}
     for each in comment_list[:]:
         comment_list += list(models.Comment.objects.filter(parent_comment_id=each['pk']).order_by("nid").extra(
@@ -287,7 +294,7 @@ def comment_tree(request, article_id):
                  "parent_comment__user__username", "friend_comment__user__username"))[:2]
         reply_num[each['pk']] = models.Comment.objects.filter(parent_comment_id=each['pk']).count()
 
-    ret = {"username": username, "comment_list": comment_list, "reply_num": reply_num}
+    ret = {"username": username, "comment_list": comment_list, "reply_num": reply_num, "page_html": page_html}
     return JsonResponse(ret)
 
 

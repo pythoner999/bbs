@@ -14698,3 +14698,27 @@ Traceback (most recent call last):
   File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 425, in media_order
     ret = {status: 0, msg:""}
 NameError: name 'status' is not defined
+[2019-02-08 22:37:01,262][Thread-15:21660][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/comment_tree/14/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 282, in comment_tree
+    comment_total = comment_list.count()
+TypeError: count() takes exactly one argument (0 given)
+[2019-02-09 13:30:12,615][Thread-502:18692][task_id:django.request][exception.py:135][ERROR][Internal Server Error: /blog/comment_tree/14/]
+Traceback (most recent call last):
+  File "C:\Python36\lib\site-packages\django\core\handlers\exception.py", line 41, in inner
+    response = get_response(request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 187, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Python36\lib\site-packages\django\core\handlers\base.py", line 185, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\Willie\Desktop\bbs\blog\views.py", line 286, in comment_tree
+    page_html = page.page_html()
+  File "C:\Users\Willie\Desktop\bbs\blog\utils\tools.py", line 87, in page_html
+    html_str_list.append('<button>'+self.total_page+'</button>')
+TypeError: must be str, not int
