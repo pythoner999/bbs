@@ -106,8 +106,9 @@
     margin-top: 50px;
 }
 
-p.article-title{
+p.article-title a{
     font-size: 1.5em;
+
 }
 
 

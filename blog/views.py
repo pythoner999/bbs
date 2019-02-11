@@ -397,7 +397,7 @@ def style(request):
         with open(path, "w") as f:
             f.write(".header {background-color: " + header + ";}"+
                     "body {background-color: " + content + ";}"+
-                    "p.article-title {font-color: " + title + ";}"
+                    "p.article-title a{font-color: " + title + ";}"
                     )
         blog = request.user.blog
         blog.theme = file
@@ -412,7 +412,7 @@ def style(request):
         with open(path,'r')as f:
             text = f.read()
 
-        rule = re.compile(r"\.header \{background-color: (?P<header>.+?);\}body \{background-color: (?P<content>.+?);\}p\.article-title \{font-color: (?P<title>.+?);\}")
+        rule = re.compile(r"\.header \{background-color: (?P<header>.+?);\}body \{background-color: (?P<content>.+?);\}p\.article-title a\{font-color: (?P<title>.+?);\}")
         result = rule.search(text)
         color_demo['header'] = result.group('header')
         color_demo['content'] = result.group('content')
