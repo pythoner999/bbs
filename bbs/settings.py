@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'zcj3do(fmw&pec7g4%0kw0+-9+hnb)3c=--*zech#ek*lp_ius'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["lxoxvxe.pythonanywhere.com"]
 
 
 # Application definition
@@ -77,10 +77,10 @@ WSGI_APPLICATION = 'bbs.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'bbs2',
-        'USER': 'root',
-        'PASSWORD': 'root',
-        'HOST': '192.168.0.110',
+        'NAME': 'lxoxvxe$default',
+        'USER': 'lxoxvxe',
+        'PASSWORD': 'root123456',
+        'HOST': 'lxoxvxe.mysql.pythonanywhere-services.com',
         'PORT': 3306
     }
 }
